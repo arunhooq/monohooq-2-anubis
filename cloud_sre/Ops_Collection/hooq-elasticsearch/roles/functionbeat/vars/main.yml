@@ -1,6 +1,0 @@
-beats:
-  artifactory: "artifacts.elastic.co"
-  path: "~/app/beats"
-  name: "functionbeat"
-
-value: !unsafe

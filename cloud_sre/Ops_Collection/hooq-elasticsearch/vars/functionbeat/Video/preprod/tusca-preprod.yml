@@ -1,4 +1,0 @@
-service:
-  name: tusca
-  environment: preprod
-  log_group: tusca

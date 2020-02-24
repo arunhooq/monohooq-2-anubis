@@ -1,4 +1,0 @@
-service:
-  name: tiberius
-  environment: production
-  log_group: /ecs/tiberiusEC2-production

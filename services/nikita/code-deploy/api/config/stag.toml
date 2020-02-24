@@ -1,6 +1,0 @@
-[app]
-print_stack_trace = false
-
-[logging]
-level = "info"
-output = "json"

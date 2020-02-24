@@ -1,4 +1,0 @@
-service:
-  name: maia-slack
-  environment: staging
-  log_group: /aws/lambda/maia-slack-service

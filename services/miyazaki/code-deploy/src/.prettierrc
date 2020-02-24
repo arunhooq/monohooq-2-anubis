@@ -1,4 +1,0 @@
-{
-  "singleQuote": true,
-  "excludeFiles": ["src/client/static/nr/nr.js"]
-}

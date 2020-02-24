@@ -1,4 +1,0 @@
-service:
-  name: trajan
-  environment: preprod
-  log_group: /aws/lambda/trajan

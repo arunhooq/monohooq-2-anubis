@@ -1,4 +1,0 @@
-service:
-  name: upcoming-title-publisher
-  environment: preprod
-  log_group: /aws/lambda/upcoming-title-publisher

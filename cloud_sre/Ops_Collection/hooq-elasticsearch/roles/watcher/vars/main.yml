@@ -1,8 +1,0 @@
-value: !unsafe
-
-watcher_type: [ "system_cpu_usage", "system_memory_usage" ]
-
-svc: ''
-memory_threshold: 0.60
-cpu_threshold: 0.65
-window_period: "5m"
