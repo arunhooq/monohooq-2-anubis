@@ -1,0 +1,17 @@
+{
+  "in_active":["androidtvv1"],
+  "ph_active":["androidtvv1"],
+  "th_active":["androidtvv1"],
+  "id_active":["androidtvv1"],
+  "sg_active":["androidtvv1"],
+  "in_lapsed":["androidtvv1"],
+  "ph_lapsed":["androidtvv1"],
+  "th_lapsed":["androidtvv1"],
+  "id_lapsed":["androidtvv1"],
+  "sg_lapsed":["androidtvv1"],
+  "in_visitor":["androidtvv1"],
+  "ph_visitor":["androidtvv1"],
+  "th_visitor":["androidtvv1"],
+  "id_visitor":["androidtvv1"],
+  "sg_visitor":["androidtvv1"]
+}

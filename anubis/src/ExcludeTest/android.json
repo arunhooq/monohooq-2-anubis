@@ -1,0 +1,17 @@
+{
+  "in_active":[],
+  "ph_active":[],
+  "th_active":[],
+  "id_active":[],
+  "sg_active":[],
+  "in_lapsed":[],
+  "ph_lapsed":[],
+  "th_lapsed":[],
+  "id_lapsed":[],
+  "sg_lapsed":[],
+  "in_visitor":["Regression_Visitor","test"],
+  "ph_visitor":[],
+  "th_visitor":[],
+  "id_visitor":[],
+  "sg_visitor":[]
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="HOOQ-API" allow-return-values="true" verbose="1">	
+	<parameter name="Project" value="Sanctuary" />
+	<parameter name="SuiteType" value="Regression" />
+	<listeners>
+	<listener class-name="com.automation.reports.EmailableReport" />
+	<listener class-name="com.automation.utilities.AnnotationTransformer" />
+	</listeners> 
+	
+	<test name="Country_TH_Android" preserve-order="true">
+	<parameter name="country" value ="TH"></parameter>
+	<parameter name="platform" value ="android"></parameter>
+		<groups>
+			<run>
+				<include name="Sanity_TH"/>
+				<include name="android"/>
+			</run>
+		</groups>
+		<packages>
+			<package name="sanctuary.tests"/>
+		</packages>	
+	</test>
+	
+	<test name="Country_TH_IOS" preserve-order="true">
+	<parameter name="country" value ="TH"></parameter>
+	<parameter name="platform" value ="ios"></parameter>
+		<groups>
+			<run>
+				<include name="Sanity_TH"/>
+				<include name="ios"/>
+			</run>
+		</groups>
+		<packages>
+			<package name="sanctuary.tests"/>
+		</packages>	
+	</test>
+	
+	
+	<test name="Country_SG_Android" preserve-order="true">
+	<parameter name="country" value ="SG"></parameter>
+	<parameter name="platform" value ="android"></parameter>
+		<groups>
+			<run>
+				<include name="Sanity_SG"/>
+				<include name="android"/>
+			</run>
+		</groups>
+		<packages>
+			<package name="sanctuary.tests"/>
+		</packages>	
+	</test>
+	
+	<test name="Country_SG_IOS" preserve-order="true">
+	<parameter name="country" value ="SG"></parameter>
+	<parameter name="platform" value ="ios"></parameter>
+		<groups>
+			<run>
+				<include name="Sanity_SG"/>
+				<include name="ios"/>
+			</run>
+		</groups>
+		<packages>
+			<package name="sanctuary.tests"/>
+		</packages>	
+	</test>
+	
+	<test name="Country_ID_Android" preserve-order="true">
+	<parameter name="country" value ="ID"></parameter>
+	<parameter name="platform" value ="android"></parameter>
+		<groups>
+			<run>
+				<include name="Sanity_ID"/>
+				<include name="android"/>
+			</run>
+		</groups>
+		<packages>
+			<package name="sanctuary.tests"/>
+		</packages>	
+	</test>
+	
+	<test name="Country_ID_IOS" preserve-order="true">
+	<parameter name="country" value ="ID"></parameter>
+	<parameter name="platform" value ="ios"></parameter>
+		<groups>
+			<run>
+				<include name="Sanity_ID"/>
+				<include name="ios"/>
+			</run>
+		</groups>
+		<packages>
+			<package name="sanctuary.tests"/>
+		</packages>	
+	</test>
+	
+	<test name="Country_PH_Android" preserve-order="true">
+	<parameter name="country" value ="PH"></parameter>
+	<parameter name="platform" value ="android"></parameter>
+		<groups>
+			<run>
+				<include name="Sanity_PH"/>
+				<include name="android"/>
+			</run>
+		</groups>
+		<packages>
+			<package name="sanctuary.tests"/>
+		</packages>	
+	</test>
+	
+	<test name="Country_PH_IOS" preserve-order="true">
+	<parameter name="country" value ="PH"></parameter>
+	<parameter name="platform" value ="ios"></parameter>
+		<groups>
+			<run>
+				<include name="Sanity_PH"/>
+				<include name="ios"/>
+			</run>
+		</groups>
+		<packages>
+			<package name="sanctuary.tests"/>
+		</packages>	
+	</test>
+	
+
+	<test name="Country_IN_Android" preserve-order="true">
+	<parameter name="country" value ="IN"></parameter>
+	<parameter name="platform" value ="android"></parameter>
+		<groups>
+			<run>
+				<include name="Sanity_IN"/>
+			</run>
+		</groups>
+		<packages>
+			<package name="sanctuary.tests"/>
+		</packages>	
+	</test>
+	
+	
+	<test name="Country_IN_IOS" preserve-order="true">
+	<parameter name="country" value ="IN"></parameter>
+	<parameter name="platform" value ="ios"></parameter>
+		<groups>
+			<run>
+				<include name="Sanity_IN"/>
+			</run>
+		</groups>
+		<packages>
+			<package name="sanctuary.tests"/>
+		</packages>	
+	</test>
+
+</suite>

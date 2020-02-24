@@ -1,0 +1,59 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="AndroidTV" allow-return-values="true">
+
+	<parameter name="Project" value="ANDROIDTV" />
+	<parameter name="SuiteType" value="Regression" />
+	<parameter name="country" value="SG" />
+	<listeners>
+		<listener class-name="com.automation.reports.EmailableReport" />
+	</listeners>
+	
+	<test name="Sanity_Active" preserve-order="true">
+	<parameter name="userType" value="Active" />
+		<groups>
+			<run>
+				<include name="Sanity_Active"/>
+			</run>
+		</groups>
+		<packages>
+			<package name="androidtv.tests"/>
+		</packages>
+	</test>
+	
+	<test name="Sanity_Lapsed" preserve-order="true">
+	<parameter name="userType" value="Lapsed" />
+		<groups>
+			<run>
+				<include name="Sanity_Lapsed"/>
+			</run>
+		</groups>
+		<packages>
+			<package name="androidtv.tests"/>
+		</packages>
+	</test>
+	
+	<test name="Regression_Active" preserve-order="true">
+	<parameter name="userType" value="Active" />
+		<groups>
+			<run>
+				<include name="Regression_Active"/>
+			</run>
+		</groups>
+		<packages>
+			<package name="androidtv.tests"/>
+		</packages>
+	</test>
+	
+	<test name="Regression_Lapsed" preserve-order="true">
+	<parameter name="userType" value="Lapsed" />
+		<groups>
+			<run>
+				<include name="Regression_Lapsed"/>
+			</run>
+		</groups>
+		<packages>
+			<package name="androidtv.tests"/>
+		</packages>
+	</test>
+	
+</suite>

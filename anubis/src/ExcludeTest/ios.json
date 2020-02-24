@@ -1,0 +1,17 @@
+{
+  "in_active":["verifySearchForChannels"],
+  "ph_active":[],
+  "th_active":[],
+  "id_active":[],
+  "sg_active":[],
+  "in_lapsed":["verifySearchForChannels"],
+  "ph_lapsed":[],
+  "th_lapsed":[],
+  "id_lapsed":[],
+  "sg_lapsed":[],
+  "in_visitor":["Sanity_Visitor","verifySearchForChannels"],
+  "ph_visitor":[],
+  "th_visitor":[],
+  "id_visitor":[],
+  "sg_visitor":[]
+}

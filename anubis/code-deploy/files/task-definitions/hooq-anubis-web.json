@@ -1,0 +1,106 @@
+[
+  {
+    "volumesFrom": [],
+    "memory": null,
+    "extraHosts": null,
+    "linuxParameters": null,
+    "dnsServers": null,
+    "disableNetworking": null,
+    "dnsSearchDomains": null,
+    "portMappings": [
+      {
+        "hostPort": ${host_port},
+      "containerPort": ${container_port},
+      "protocol": "tcp"
+      }
+    ],
+    "hostname": null,
+    "essential": true,
+    "entryPoint": [],
+    "name": "${container_name}",
+    "repositoryCredentials": {
+      "credentialsParameter": "${github_package_credentials_arn}"
+    },
+    "ulimits": [
+      {
+        "softLimit": 10000,
+        "hardLimit": 30000,
+        "name": "nofile"
+      }
+    ],
+    "dockerSecurityOptions": null,
+    "secrets": [
+      {
+        "name": "environment",
+        "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/anubis/web/environment"
+      },
+      {
+        "name": "Project",
+        "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/anubis/web/Project"
+      },
+      {
+        "name": "suiteType",
+        "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/anubis/web/suiteType"
+      },
+      {
+        "name": "userTypeList",
+        "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/anubis/web/userTypeList"
+      },
+      {
+        "name": "countries",
+        "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/anubis/web/countries"
+      },
+      {
+        "name": "strPlatformName",
+        "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/anubis/web/strPlatformName"
+      },
+      {
+        "name": "targetExecution",
+        "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/anubis/web/targetExecution"
+      },
+      {
+        "name": "EmailList",
+        "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/anubis/web/EmailList"
+      },
+      {
+        "name": "strTestRailSuiteName",
+        "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/anubis/web/strTestRailSuiteName"
+      },
+      {
+        "name": "strTestRail",
+        "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/anubis/web/strTestRail"
+      },
+      {
+        "name": "strMaxRetryCount",
+        "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/anubis/web/strMaxRetryCount"
+      },
+      {
+        "name": "isVideoRecord",
+        "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/anubis/web/isVideoRecord"
+      },
+      {
+        "name": "RunType",
+        "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/anubis/web/RunType"
+      }
+
+    ],
+    "links": null,
+    "workingDirectory": null,
+    "readonlyRootFilesystem": null,
+    "image": "${docker_image}:${docker_tag}",
+    "command": [],
+    "user": null,
+    "dockerLabels": null,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${awslogs_group}",
+        "awslogs-region": "${region}",
+        "awslogs-stream-prefix": "${container_name}"
+      }
+    },
+    "cpu": 200,
+    "privileged": null,
+    "memoryReservation": 500
+  }
+]

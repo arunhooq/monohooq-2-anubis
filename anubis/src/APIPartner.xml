@@ -1,0 +1,43 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="API-PARTNER" allow-return-values="true" verbose="2">
+
+	<listeners>
+		<listener class-name="com.automation.reports.EmailableReport" />
+	</listeners>
+
+	<test name="HOOQ_Test_API_Partner" preserve-order="true">
+	<method-selectors>
+    	<method-selector>
+            <script language="beanshell">
+             <![CDATA[
+				groupNamesToRun = System.getProperty("groupToRun");
+
+				// If no group names are provided run all groups.
+				if (groupNamesToRun.isEmpty()) {
+					return true;
+				}
+				else
+				{
+				StringTokenizer groupsList = new StringTokenizer(groupNamesToRun, ",");
+
+				// If tagged group of method contains passed group names
+				while (groupsList.hasMoreTokens()) {
+					if (groups.containsKey(groupsList.nextToken()))
+						return true;
+					}
+
+					// Ignore method if desired group names not macthed
+					return false;
+					}
+				}
+			]]>
+			</script>
+        </method-selector>
+    </method-selectors>
+	<parameter name="country" value ="ID"></parameter>
+	<parameter name="partner" value ="EVERGENTHOOQ"></parameter>
+		<packages>
+			<package name="partner.tests"/>
+		</packages>
+	</test>
+</suite>

@@ -1,0 +1,43 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="WEB" allow-return-values="true">
+	<parameter name="Project" value="WEB" />
+	<parameter name="SuiteType" value="Sanity" />
+	<parameter name="country" value="SG" />
+	<listeners>
+		<listener class-name="com.automation.reports.EmailableReport" />
+		<listener class-name="com.automation.utilities.AnnotationTransformer" />
+	</listeners> 
+	<test name="Sanity_Visitor" preserve-order="true">
+	<parameter name="userType" value="Visitor" />
+		<groups>
+			<run>
+				<include name="Sanity_Visitor"/>
+			</run>
+		</groups>
+		<packages>
+			<package name="web.tests"/>
+		</packages>
+	</test>
+	<test name="Sanity_Active" preserve-order="true">
+	<parameter name="userType" value="Active" />
+		<groups>
+			<run>
+				<include name="Sanity_Active"/>
+			</run>
+		</groups>
+		<packages>
+			<package name="web.tests"/>
+		</packages>
+	</test>
+	<test name="Sanity_Lapsed" preserve-order="true">
+	<parameter name="userType" value="Lapsed" />
+		<groups>
+			<run>
+				<include name="Sanity_Lapsed"/>
+			</run>
+		</groups>
+		<packages>
+			<package name="web.tests"/>
+		</packages>
+	</test>
+</suite>
