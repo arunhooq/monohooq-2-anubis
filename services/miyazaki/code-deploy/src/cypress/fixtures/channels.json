@@ -1,0 +1,533 @@
+{
+  "data": [
+    {
+      "row_id": "bf3a7c04-1cd3-4195-9e71-0dfd82712f1c",
+      "row_name": "Premium TV",
+      "region": "ID",
+      "order": 0,
+      "type": "TV-Channel",
+      "meta": {},
+      "data": [
+        {
+          "id": "1a694c93-19de-4d47-ac11-f2a5a0724c56",
+          "title": "Duck TV",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/0242e6bc3d9f.png"
+          },
+          "isPremium": false,
+          "avod": true,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "192cea0e-578e-4533-a4b1-05985627f5ab",
+          "title": "Metro TV Indonesia",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/b9948490b7c2.png",
+            "backgroundUrl": "https://hooq-sanctuary.s3.amazonaws.com/assets/feed/05df0626e42e.jpg",
+            "transparentLogoUrl": "https://hooq-sanctuary.s3.amazonaws.com/assets/feed/4eda2b6598c3.png"
+          },
+          "isPremium": false,
+          "avod": true,
+          "adLink": "https://search.spotxchange.com/vast/3.00/246298?app[name]=hooq.tv&app[domain]=www.hooq.tv&app[privacypolicy]=1&content[language]=bahasa&content[livestream]=1&app[cat][]=IAB1&app[cat][]=IAB12&app[cat][]=IAB17&app[cat][]=IAB18",
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "cc167a24-29ab-4c23-9207-a1d8f7b432ee",
+          "title": "Diva",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/7842479a6227.png"
+          },
+          "isPremium": true,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "7dd9aab3-9a4b-40e1-a292-5e681490fe09",
+          "title": "Dreamworks Dup",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/9d4b0b6422eb.png"
+          },
+          "isPremium": true,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "1a637c4f-5219-4921-8366-b01b7958abc1",
+          "title": "Jawa Pos TV Indonesia",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/7820fcea08dc.png"
+          },
+          "isPremium": false,
+          "avod": true,
+          "adLink": "https://search.spotxchange.com/vast/3.00/135325?app[name]=hooq.tv&app[domain]=www.hooq.tv&app[privacypolicy]=1&content[language]=english&content[livestream]=1&app[cat][]=IAB1-2",
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "a61a483f-f8ba-4e8f-8f7d-e1bb0c1f25e5",
+          "title": "Global TV Indonesia",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/7a7543ee78e6.png",
+            "backgroundUrl": "https://hooq-sanctuary.s3.amazonaws.com/assets/feed/05df0626e42e.jpg",
+            "transparentLogoUrl": "https://hooq-sanctuary.s3.amazonaws.com/assets/feed/4eda2b6598c3.png"
+          },
+          "isPremium": true,
+          "avod": true,
+          "adLink": "https://search.spotxchange.com/vast/3.00/245992?app[name]=hooq.tv&app[domain]=www.hooq.tv&app[privacypolicy]=1&content[language]=english,chinese&content[livestream]=1&app[cat][]=IAB1-1&app[cat][]=IAB1-2",
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": "9c8b0e32-e3d2-4f4f-80f2-b657e872c262"
+        },
+        {
+          "id": "1822b41e-f632-4268-b974-1fda84f351f7",
+          "title": "E!",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/a993d28485ea.png"
+          },
+          "isPremium": true,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "944d12d5-9d53-41f3-b7af-19ae3bd660be",
+          "title": "MNC TV Indonesia",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/53293320a216.png",
+            "backgroundUrl": null,
+            "transparentLogoUrl": null
+          },
+          "isPremium": false,
+          "avod": true,
+          "adLink": "https://search.spotxchange.com/vast/2.00/246293?app[name]=hooq.tv&app[domain]=www.hooq.tv&app[privacypolicy]=1&content[language]=english,chinese&content[livestream]=1&app[cat][]=IAB8-16&app[cat][]=IAB9&app[cat][]=IAB12&app[cat][]=IAB2-9",
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "ca8c143c-4aff-4be4-b00d-add9e6493eef",
+          "title": "TV One Indonesia",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/f20aea254ac4.png"
+          },
+          "isPremium": false,
+          "avod": true,
+          "adLink": "https://search.spotxchange.com/vast/2.00/246295?app[name]=hooq.tv&app[domain]=www.hooq.tv&app[privacypolicy]=1&content[language]=&content[livestream]=1&app[cat][]=IAB1&app[cat][]=IAB12&app[cat][]=IAB17&app[cat][]=IAB18",
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "5f62ae90-3f4f-4ff6-be42-1a220c5b66d8",
+          "title": "Kompas TV Indonesia",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/874d54722b28.png"
+          },
+          "isPremium": true,
+          "avod": true,
+          "adLink": "https://search.spotxchange.com/vast/2.00/246296?app[name]=hooq.tv&app[domain]=www.hooq.tv&app[cat][]=IAB1&app[cat][]=IAB12&app[cat][]=IAB17&app[cat][]=IAB18&app[privacypolicy]=1&content[genre]=&content[language]=english&content[livestream]=1",
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "88aae090-eded-4c37-9ffa-271f269f16ad",
+          "title": "Jak TV Indonesia",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/347e409df626.png"
+          },
+          "isPremium": false,
+          "avod": true,
+          "adLink": "https://search.spotxchange.com/vast/2.00/246299?app[name]=hooq.tv&app[domain]=www.hooq.tv&app[cat][]=IAB1&app[cat][]=IAB12&app[cat][]=IAB17&app[cat][]=IAB18&app[privacypolicy]=1&content[genre]=comedy&content[language]=english&content[livestream]=1",
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "5fdf2136-9171-4d94-9f7a-ad6e2b30ad6a",
+          "title": "Berita Satu Indonesia",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/c994d4ebded6.png",
+            "backgroundUrl": "https://hooq-sanctuary.s3.amazonaws.com/assets/feed/6defda46b9f4.jpg",
+            "transparentLogoUrl": "https://hooq-sanctuary.s3.amazonaws.com/assets/feed/570e93bb3874.png"
+          },
+          "isPremium": false,
+          "avod": true,
+          "adLink": "https://search.spotxchange.com/vast/2.00/246300?app[name]=hooq.tv&app[domain]=www.hooq.tv&app[cat][]=IAB1&app[cat][]=IAB12&app[cat][]=IAB17&app[cat][]=IAB18&app[privacypolicy]=1&content[genre]=drama&content[language]=&content[livestream]=1",
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "c0f086a1-3745-4f13-abe0-827437664a6b",
+          "title": "Jawa Pos Group Indonesia",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/5a3dc44a140a.png"
+          },
+          "isPremium": true,
+          "avod": true,
+          "adLink": "https://search.spotxchange.com/vast/2.00/246301?app[name]=hooq.tv&app[domain]=www.hooq.tv&app[privacypolicy]=1&content[language]=&content[livestream]=1&app[cat][]=IAB1&app[cat][]=IAB12&app[cat][]=IAB17&app[cat][]=IAB18",
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": "b33ca52f-663d-4e21-9af5-24b8c47a0cf5"
+        },
+        {
+          "id": "1bc2380f-7614-4a77-a44b-abb9027664f9",
+          "title": "TheDrive",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/d10af14a0e4f.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": "",
+          "adFreqCap": 3,
+          "provider": "UCAST",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "a7b56ae1-df46-4414-b7a9-2de15610bfeb",
+          "title": "Health",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/1b7b9da2f8b1.png"
+          },
+          "isPremium": false,
+          "avod": true,
+          "adLink": "https://search.spotxchange.com/vast/2.00/247656?app[name]=hooq.tv&app[domain]=www.hooq.tv&app[cat][]=IAB1&app[cat][]=IAB12&app[cat][]=IAB17&app[cat][]=IAB18&app[privacypolicy]=1&content[genre]=&content[language]=&content[livestream]=1",
+          "adFreqCap": 3,
+          "provider": "UCAST",
+          "catchUpCollectionId": null
+        }
+      ]
+    },
+    {
+      "row_id": "b3884628-447a-47a1-992c-21cb3552e0ac",
+      "row_name": "Test uCast",
+      "region": "ID",
+      "order": 2,
+      "type": "TV-Channel",
+      "meta": {},
+      "data": [
+        {
+          "id": "a7b56ae1-df46-4414-b7a9-2de15610bfeb",
+          "title": "Health",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/1b7b9da2f8b1.png"
+          },
+          "isPremium": false,
+          "avod": true,
+          "adLink": "https://search.spotxchange.com/vast/2.00/247656?app[name]=hooq.tv&app[domain]=www.hooq.tv&app[cat][]=IAB1&app[cat][]=IAB12&app[cat][]=IAB17&app[cat][]=IAB18&app[privacypolicy]=1&content[genre]=&content[language]=&content[livestream]=1",
+          "adFreqCap": 3,
+          "provider": "UCAST",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "1bc2380f-7614-4a77-a44b-abb9027664f9",
+          "title": "TheDrive",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/d10af14a0e4f.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": "",
+          "adFreqCap": 3,
+          "provider": "UCAST",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "fcdc4262-513a-4e75-b89a-fbe0438f44d9",
+          "title": "Entertainment Weekly Magazine",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/9be8a25ab8f0.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "UCAST",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "41e12b9e-75b7-4937-8700-fa6bb6c55cc6",
+          "title": "Time Magazine",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/0ed7ebe4434e.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "UCAST",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "bd494f98-cfb8-4d94-920f-0371340a4211",
+          "title": "Sports Illustrated",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/75b164a14916.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "UCAST",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "ea693393-502f-4465-92ac-30f67d07178b",
+          "title": "Fortune Magazine",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/97a752daa552.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "UCAST",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "8a8a18f3-1a80-4723-a2b5-7ee3571184da",
+          "title": "The Pet Collective",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/74e6b8755f4c.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "UCAST",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "8f9369ca-f316-4284-ab49-a848dc1f2534",
+          "title": "People are Awesome",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/126ceef10429.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "UCAST",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "8d0a48fc-c06b-4cc0-baf9-2c26ae82f6ea",
+          "title": "Bloomberg",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/7491ddf33912.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "UCAST",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "de3abda4-3d78-406b-94b1-6f55be5b5370",
+          "title": "Food Channel",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/a767ee8a12f6.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "UCAST",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "a50d4563-ff97-4ed9-8b06-dac21a72fee3",
+          "title": "Lifestyle Channel",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/7cc3da96a683.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "UCAST",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "a6e2d900-ff01-4048-a8bd-3bcb6b11af21",
+          "title": "Baeble Music Channel",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/e939b2067c2b.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "UCAST",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "eef87825-d663-48df-b401-1d36e7dde9ab",
+          "title": "InStyle Magazine",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/fb376d165d98.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "UCAST",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "a8b98759-1ec0-41d1-bed8-059e6db6094f",
+          "title": "Fail Army",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/120fbe5acf3b.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": "",
+          "adFreqCap": 3,
+          "provider": "UCAST",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "7dd9aab3-9a4b-40e1-a292-5e681490fe09",
+          "title": "Dreamworks Dup",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/9d4b0b6422eb.png"
+          },
+          "isPremium": true,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": null
+        }
+      ]
+    },
+    {
+      "row_id": "36a5b616-0ae3-490b-af73-a416f52f34c7",
+      "row_name": "Ordered Channel",
+      "region": "ID",
+      "order": 4,
+      "type": "TV-Channel",
+      "meta": {},
+      "data": [
+        {
+          "id": "32e50556-d887-48d8-9efa-470941a741a0",
+          "title": "One",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/ce152a6cab6e.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "15f55af5-a13b-4353-adaa-db333a55df03",
+          "title": "Two",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/d4bf6c89523a.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "55568b1c-e55a-43a1-8fc2-28212fb47c96",
+          "title": "Three",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/d55282ebb046.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "HLS",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "fbfb1806-3bbe-4d2d-a37e-14ccd86ee657",
+          "title": "Channel 1",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/a8ede44869a7.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "054ed59b-5174-4189-ae93-ab223cf15155",
+          "title": "Channel 4",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/aa0e4518268a.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "831fd2fd-4f0c-4854-947a-645c0bb4aebf",
+          "title": "Channel 3",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/2cc71f36b527.png"
+          },
+          "isPremium": false,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": null
+        },
+        {
+          "id": "7dd9aab3-9a4b-40e1-a292-5e681490fe09",
+          "title": "Dreamworks Dup",
+          "images": {
+            "logoUrl": "https://assets.hooq.tv/feed/9d4b0b6422eb.png"
+          },
+          "isPremium": true,
+          "avod": false,
+          "adLink": null,
+          "adFreqCap": 3,
+          "provider": "BRIGHTCOVE",
+          "catchUpCollectionId": null
+        }
+      ]
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "perPage": 25,
+    "totalPages": 1,
+    "totalCount": 4
+  },
+  "meta": {
+    "requestId": "0813de4b-09fa-4f25-99d9-2be4d59ef1e3",
+    "timestamp": 1569556445329
+  }
+}

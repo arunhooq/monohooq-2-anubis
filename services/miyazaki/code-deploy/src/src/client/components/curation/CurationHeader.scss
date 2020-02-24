@@ -1,0 +1,34 @@
+@import '../../styles/_variables';
+
+.curation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 2.5rem;
+  height: auto;
+  margin: 0.6rem 0 0 0;
+
+  &__title {
+    flex: 1;
+    font-family: $family-primary;
+    color: $black;
+    font-size: 1rem;
+    letter-spacing: -0.01875rem;
+    word-spacing: -0.03125rem;
+    font-weight: 800;
+    line-height: 1.33;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__see-all-link {
+    font-family: $family-primary;
+    color: $primary;
+    font-size: 0.875rem;
+    font-weight: 800;
+    line-height: 1;
+    min-width: 2rem;
+  }
+}

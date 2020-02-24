@@ -1,0 +1,4 @@
+service:
+  name: sanctuary
+  environment: prod
+  log_group: sanctuary-ecs-prod-logs

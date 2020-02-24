@@ -1,0 +1,29 @@
+name: nikita-infra-delete-play
+on:
+  push:
+    tags:
+      - delete-nikita-play-*
+  schedule:
+    # The cron will run at 12:00 UTC (20:00 SGT)
+    - cron: '0 12 * * *'
+
+jobs:
+  nikita-infra-delete-play:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout public repo
+        uses: actions/checkout@v2
+
+      - name: Destroy nikita infra-deploy
+        run: make terraform-install terraform-destroy
+        working-directory: services/nikita/infra-deploy/
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: play
+          TF_TOKEN_CLOUD_SRE: ${{ secrets.TF_TOKEN_CLOUD_SRE }}
+          TF_TOKEN_NIKITA: ${{ secrets.TF_TOKEN_NIKITA }}
+          PRIVATE_REGISTRY_TOKEN: ${{ secrets.QUAY_REGISTRY_TOKEN }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_PLAY_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_PLAY_SECRET_KEY }}
+          ANSIBLE_VAULT_PASSWORD: ${{ secrets.NIKITA_ANSIBLE_VAULT_PASSWORD }}
+          ENVIRONMENT: play

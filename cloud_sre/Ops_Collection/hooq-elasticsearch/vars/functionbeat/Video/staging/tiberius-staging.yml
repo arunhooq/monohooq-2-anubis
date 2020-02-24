@@ -1,0 +1,4 @@
+service:
+  name: tiberius
+  environment: staging
+  log_group: /ecs/tiberiusEC2-staging

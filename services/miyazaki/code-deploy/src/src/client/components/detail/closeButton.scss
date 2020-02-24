@@ -1,0 +1,11 @@
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: -0.25rem;
+}
+
+.shadow {
+  -webkit-filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.75));
+  -moz-filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.75));
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.75));
+}

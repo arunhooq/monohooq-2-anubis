@@ -1,0 +1,37 @@
+name: delete-terraform-miyazaki-prod-resources
+on:
+  push:
+    tags:
+      - delete-miyazaki-prod-*
+jobs:
+  delete-terraform-miyazaki-prod-resources-job:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout public repo
+        uses: actions/checkout@master
+
+      - name: Get the latest terraform version
+        run: make terraform-install
+        
+
+      - name: Destroy terraform miyazaki infra-deploy
+        run: make terraform-destroy
+        working-directory: services/miyazaki/infra-deploy/
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: prod
+          ENVIRONMENT: prod
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_PROD_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_PROD_SECRET_KEY }}
+          TF_TOKEN_CLOUD_SRE: ${{ secrets.TF_TOKEN_CLOUD_SRE }}
+          DOCKER_GITHUB_TOKEN: ${{ secrets.QUAY_REGISTRY_TOKEN }}
+          TF_TOKEN_MIYAZAKI: ${{ secrets.TF_TOKEN_MIYAZAKI }}
+          DOCKER_TOKEN: ${{ secrets.QUAY_REGISTRY_TOKEN }}
+          PRIVATE_REGISTRY_TOKEN: ${{ secrets.QUAY_REGISTRY_TOKEN }}
+          ANSIBLE_VAULT_PASSWORD_FILE: vault_env
+          ANSIBLE_VAULT_PASSWORD: ${{ secrets.MIYAZAKI_ANSIBLE_VAULT_PASSWORD }}
+          AWS_ACCEPTER_ACCESS_KEY: ${{ secrets.AWS_CC_PROD_ACCESS_KEY }}
+          AWS_ACCEPTER_SECRET_KEY: ${{ secrets.AWS_CC_PROD_SECRET_KEY }}
+          AWS_INITIATOR_ACCESS_KEY: ${{ secrets.AWS_PROD_ACCESS_KEY }}
+          AWS_INITIATOR_SECRET_KEY: ${{ secrets.AWS_PROD_SECRET_KEY }}

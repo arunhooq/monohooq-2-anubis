@@ -1,0 +1,39 @@
+---
+- name: Add space template
+  tags: configspaces
+  uri:
+    url: "{{ kibana.url }}/api/spaces/space"
+    method: POST
+    user: "{{ secret.kibana.username }}"
+    password: "{{ secret.kibana.password }}"
+    return_content: yes
+    body: "{{ lookup('template','../templates/spaces_details.json.j2') }}"
+    body_format: json
+    status_code: 200,201
+    validate_certs: no
+    force_basic_auth: yes
+    register: response
+    changed_when: response.status == 201
+    headers:
+      kbn-xsrf: "{{ ansible_date_time.iso8601_micro | to_uuid }}"
+  register: response
+  ignore_errors: true
+
+- name: Update space template
+  tags: configspaces
+  uri:
+    url: "{{ kibana.url }}/api/spaces/space/{{ item.id }}"
+    method: PUT
+    user: "{{ secret.kibana.username }}"
+    password: "{{ secret.kibana.password }}"
+    return_content: yes
+    body: "{{ lookup('template','../templates/spaces_details.json.j2') }}"
+    body_format: json
+    status_code: 200,201
+    validate_certs: no
+    force_basic_auth: yes
+    register: response
+    changed_when: response.status == 200 || response.status == 201
+    headers:
+      kbn-xsrf: "{{ ansible_date_time.iso8601_micro | to_uuid }}"
+  when: response.status == 409

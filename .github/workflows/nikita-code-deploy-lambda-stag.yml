@@ -1,0 +1,117 @@
+name: nikita-code-deploy-lambda-stag
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - nikita-lambda-stag-account-stream-consumer-*
+      - nikita-lambda-stag-account-stream-producer-*
+      - nikita-lambda-stag-transaction-stream-consumer-*
+      - nikita-lambda-stag-transaction-stream-producer-*
+    paths:
+      - "services/nikita/code-deploy/lambda/**/*.go"
+      - "services/nikita/code-deploy/lambda/**/*.tf"
+      - "services/nikita/code-deploy/lambda/**/Makefile"
+
+jobs:
+  nikita-code-deploy-lambda-auto-stag:
+    if: startsWith(github.ref, 'refs/heads/master')
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout public repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: build and deploy lambdas
+        run: make git-setup auto-upload terraform-install auto-terraform-apply
+        working-directory: services/nikita/code-deploy/lambda
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: stag
+          TF_TOKEN_NIKITA: ${{ secrets.TF_TOKEN_NIKITA }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_STAG_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_STAG_SECRET_KEY }}
+          JFROG_API_KEY: ${{ secrets.JFROG_API_KEY }}
+          SSH_KEY: ${{ secrets.DEPLOYER_KEY_PRIV }}
+          SSH_KEY_PUB: ${{ secrets.DEPLOYER_KEY_PUB }}
+
+  nikita-code-deploy-lambda-account-stream-consumer-stag:
+    if: startsWith(github.ref, 'refs/tags/nikita-lambda-stag-account-stream-consumer-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout public repo
+        uses: actions/checkout@v2
+
+      - name: upload and update account-stream-consumer
+        run: make git-setup upload terraform-install terraform-apply
+        working-directory: services/nikita/code-deploy/lambda/account_stream_consumer
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: stag
+          TF_TOKEN_NIKITA: ${{ secrets.TF_TOKEN_NIKITA }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_STAG_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_STAG_SECRET_KEY }}
+          JFROG_API_KEY: ${{ secrets.JFROG_API_KEY }}
+          SSH_KEY: ${{ secrets.DEPLOYER_KEY_PRIV }}
+          SSH_KEY_PUB: ${{ secrets.DEPLOYER_KEY_PUB }}
+
+  nikita-code-deploy-lambda-account-stream-producer-stag:
+    if: startsWith(github.ref, 'refs/tags/nikita-lambda-stag-account-stream-producer-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout public repo
+        uses: actions/checkout@v2
+
+      - name: upload and update account-stream-producer
+        run: make git-setup upload terraform-install terraform-apply
+        working-directory: services/nikita/code-deploy/lambda/account_stream_producer
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: stag
+          TF_TOKEN_NIKITA: ${{ secrets.TF_TOKEN_NIKITA }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_STAG_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_STAG_SECRET_KEY }}
+          JFROG_API_KEY: ${{ secrets.JFROG_API_KEY }}
+          SSH_KEY: ${{ secrets.DEPLOYER_KEY_PRIV }}
+          SSH_KEY_PUB: ${{ secrets.DEPLOYER_KEY_PUB }}
+
+  nikita-code-deploy-lambda-transaction-stream-consumer-stag:
+    if: startsWith(github.ref, 'refs/tags/nikita-lambda-stag-transaction-stream-consumer-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout public repo
+        uses: actions/checkout@v2
+
+      - name: upload and update transaction-stream-consumer
+        run: make git-setup upload terraform-install terraform-apply
+        working-directory: services/nikita/code-deploy/lambda/transaction_stream_consumer
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: stag
+          TF_TOKEN_NIKITA: ${{ secrets.TF_TOKEN_NIKITA }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_STAG_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_STAG_SECRET_KEY }}
+          JFROG_API_KEY: ${{ secrets.JFROG_API_KEY }}
+          SSH_KEY: ${{ secrets.DEPLOYER_KEY_PRIV }}
+          SSH_KEY_PUB: ${{ secrets.DEPLOYER_KEY_PUB }}
+
+  nikita-code-deploy-lambda-transaction-stream-producer-stag:
+    if: startsWith(github.ref, 'refs/tags/nikita-lambda-stag-transaction-stream-producer-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout public repo
+        uses: actions/checkout@v2
+
+      - name: upload and update transaction-stream-producer
+        run: make git-setup upload terraform-install terraform-apply
+        working-directory: services/nikita/code-deploy/lambda/transaction_stream_producer
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: stag
+          TF_TOKEN_NIKITA: ${{ secrets.TF_TOKEN_NIKITA }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_STAG_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_STAG_SECRET_KEY }}
+          JFROG_API_KEY: ${{ secrets.JFROG_API_KEY }}
+          SSH_KEY: ${{ secrets.DEPLOYER_KEY_PRIV }}
+          SSH_KEY_PUB: ${{ secrets.DEPLOYER_KEY_PUB }}

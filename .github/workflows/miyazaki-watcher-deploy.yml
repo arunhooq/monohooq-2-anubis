@@ -1,0 +1,18 @@
+name: miyazaki-watcher-deploy
+on: 
+  push:
+    tags:
+      - MIYAZAKI-WATCHER-*
+
+jobs:
+  deploy-miyazaki-watcher:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout public repo
+        uses: actions/checkout@master
+
+      - name: Put the watcher
+        run: make ansible-apply
+        working-directory: services/miyazaki/metrics-deploy/watcher/
+        env:
+          ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}

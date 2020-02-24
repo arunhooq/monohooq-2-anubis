@@ -1,0 +1,50 @@
+name: cloud-sre-aws-play
+on:
+  push:
+    branches:
+      - CS-*
+    tags:
+      - cloudsre-aws-play-*
+    paths:
+      - 'cloud_sre/aws/**.tf'
+      - '!cloud_sre/aws/generic/**.tf'
+jobs:
+  deploy-cloud-sre-aws-play:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout public repo
+        uses: actions/checkout@master
+        
+      - name: Install botocore and boto3
+        run: pip install botocore boto3
+
+      - name: Get the latest terraform version
+        run: make terraform-install
+
+      - name: Apply Cloudsre generic resources like ACM,Secrets manager,S3 and Custom SSM Policy
+        run: make terraform-apply
+        working-directory: cloud_sre/aws/
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: play
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_PLAY_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_PLAY_SECRET_KEY }}
+          TF_TOKEN_CLOUD_SRE: ${{ secrets.TF_TOKEN_CLOUD_SRE }}
+          PRIVATE_REGISTRY_TOKEN: ${{ secrets.QUAY_REGISTRY_TOKEN }}
+
+      - name: Apply Generic secrets
+        run: make ansible-apply
+        working-directory: cloud_sre/aws/
+        env:
+          ANSIBLE_VAULT_PASSWORD_FILE: vault_env
+          ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
+          TF_IN_AUTOMATION: true
+          ENVIRONMENT: play
+          TF_WORKSPACE: play
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_PLAY_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_PLAY_SECRET_KEY }}
+          AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+
+
+

@@ -1,0 +1,32 @@
+name: anubis-terraformcloud-workspace-creation
+on:
+  repository_dispatch:
+    types: [terraform-workspace-creation]
+
+jobs:
+  anubis-terraformcloud-workspace-creation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout public repo
+        uses: actions/checkout@master
+
+      - name: get the latest terraform version
+        run: curl -L -O https://releases.hashicorp.com/terraform/"$TF_STABLE_VERSION"/terraform_"$TF_STABLE_VERSION"_linux_amd64.zip && unzip *.zip && sudo mv terraform /usr/bin/terraform
+        env:
+          TF_STABLE_VERSION:  ${{ secrets.TF_STABLE_VERSION }}
+
+      - name: Create terraform cli config
+        run: printf '%s\n' 'credentials "app.terraform.io" {' 'token = "my-token"' '}' > $HOME/.terraformrc   && sed -i -e "s/my-token/$TF_TOKEN/g" $HOME/.terraformrc
+        env:
+          TF_TOKEN: ${{ secrets.TF_TOKEN_ANUBIS }}
+
+
+      - name: Create workspcae for infra-deploy anubis
+        run: echo '1' | TF_WORKSPACE=$TFCLOUD_WORKSPACE terraform init
+        working-directory: anubis/infra-deploy
+        env:
+          TF_IN_AUTOMATION: true
+          TFCLOUD_WORKSPACE: arun_sample_123
+          TF_TOKEN_ANUBIS: ${{ secrets.TF_TOKEN_ANUBIS }}
+
+

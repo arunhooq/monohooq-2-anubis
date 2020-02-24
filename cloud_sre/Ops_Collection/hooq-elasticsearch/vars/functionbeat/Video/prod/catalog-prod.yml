@@ -1,0 +1,4 @@
+service:
+  name: catalog-service
+  environment: production
+  log_group: /etc/catalog-production

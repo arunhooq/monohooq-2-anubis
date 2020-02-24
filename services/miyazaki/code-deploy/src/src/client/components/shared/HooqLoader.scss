@@ -1,0 +1,29 @@
+@import '../../styles/_variables';
+
+.loader-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 5.2rem);
+  background-color: $white;
+
+  #animated_oo {
+    stroke-dasharray: 250;
+    animation: dash 4s ease-out infinite;
+  }
+  @keyframes dash {
+    to {
+      stroke-dashoffset: 1000;
+    }
+  }
+}
+
+.loader-text {
+  font-family: $family-primary;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.43;
+  color: rgb(224, 224, 224);
+  margin-top: -0.1rem;
+}

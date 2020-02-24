@@ -1,0 +1,92 @@
+name: nikita-infra-deploy
+on:
+  push:
+    tags:
+      - nikita-infra-play-*
+      - nikita-infra-dev-*
+      - nikita-infra-stag-*
+      - nikita-infra-prod-*
+    branches:
+      - master
+      - UM-*
+    paths:
+      - 'services/nikita/infra-deploy/*.tf'
+
+jobs:
+  nikita-infra-deploy-play:
+    if: startsWith(github.ref, 'refs/tags/nikita-infra-play-') || startsWith(github.ref, 'refs/heads/UM-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout public repo
+        uses: actions/checkout@v2
+
+      - name: Apply terraform nikita infra
+        run: make terraform-install terraform-apply
+        working-directory: services/nikita/infra-deploy/
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: play
+          TF_TOKEN_CLOUD_SRE: ${{ secrets.TF_TOKEN_CLOUD_SRE }}
+          TF_TOKEN_NIKITA: ${{ secrets.TF_TOKEN_NIKITA }}
+          PRIVATE_REGISTRY_TOKEN: ${{ secrets.QUAY_REGISTRY_TOKEN }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_PLAY_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_PLAY_SECRET_KEY }}
+          ANSIBLE_VAULT_PASSWORD: ${{ secrets.NIKITA_ANSIBLE_VAULT_PASSWORD }}
+          ENVIRONMENT: play
+
+  nikita-infra-deploy-dev:
+    if: startsWith(github.ref, 'refs/tags/nikita-infra-dev-') || startsWith(github.ref, 'refs/heads/master')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout public repo
+        uses: actions/checkout@v2
+
+      - name: Apply terraform nikita infra
+        run: make terraform-install terraform-apply
+        working-directory: services/nikita/infra-deploy/
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: dev
+          TF_TOKEN_CLOUD_SRE: ${{ secrets.TF_TOKEN_CLOUD_SRE }}
+          TF_TOKEN_NIKITA: ${{ secrets.TF_TOKEN_NIKITA }}
+          PRIVATE_REGISTRY_TOKEN: ${{ secrets.QUAY_REGISTRY_TOKEN }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_DEV_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_DEV_SECRET_KEY }}
+          ANSIBLE_VAULT_PASSWORD: ${{ secrets.NIKITA_ANSIBLE_VAULT_PASSWORD }}
+          ENVIRONMENT: dev
+
+  nikita-infra-deploy-stag:
+    if: startsWith(github.ref, 'refs/tags/nikita-infra-stag-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Apply terraform nikita infra
+        run: make terraform-install terraform-apply
+        working-directory: services/nikita/infra-deploy/
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: stag
+          TF_TOKEN_CLOUD_SRE: ${{ secrets.TF_TOKEN_CLOUD_SRE }}
+          TF_TOKEN_NIKITA: ${{ secrets.TF_TOKEN_NIKITA }}
+          PRIVATE_REGISTRY_TOKEN: ${{ secrets.QUAY_REGISTRY_TOKEN }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_STAG_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_STAG_SECRET_KEY }}
+          ANSIBLE_VAULT_PASSWORD: ${{ secrets.NIKITA_ANSIBLE_VAULT_PASSWORD }}
+          ENVIRONMENT: stag
+
+  nikita-infra-deploy-prod:
+    if: startsWith(github.ref, 'refs/tags/nikita-infra-prod-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Apply terraform nikita infra
+        run: make terraform-install terraform-apply
+        working-directory: services/nikita/infra-deploy/
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: prod
+          TF_TOKEN_CLOUD_SRE: ${{ secrets.TF_TOKEN_CLOUD_SRE }}
+          TF_TOKEN_NIKITA: ${{ secrets.TF_TOKEN_NIKITA }}
+          PRIVATE_REGISTRY_TOKEN: ${{ secrets.QUAY_REGISTRY_TOKEN }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_PROD_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_PROD_SECRET_KEY }}
+          ANSIBLE_VAULT_PASSWORD: ${{ secrets.NIKITA_ANSIBLE_VAULT_PASSWORD }}
+          ENVIRONMENT: prod

@@ -1,0 +1,22 @@
+--- # playbook to run functionbeat as a lambda function in AWS to push cloudwatch logs to PROD Elasticsearch
+
+- hosts: localhost
+  connection: local
+  pre_tasks:
+    - name: load variables for functionbeat
+      include_vars: "{{ item }}"
+      with_items:
+        - "../../../cloud_sre/Ops_Collection/hooq-elasticsearch/roles/functionbeat/vars/main.yml"
+        - "../../../cloud_sre/Ops_Collection/hooq-elasticsearch/roles/functionbeat/vars/main-vault.yml"
+
+  roles:
+    - { role: functionbeat,
+        functionbeat_log_files: '{{ svc }}-{{ env }}-logs',
+        functionbeat_version: "{{ functionbeat_version }}",
+        index: "hooq-{{ env }}-app-{{ svc }}-logs-%{+yyyy.MM.dd}",
+        s3_bucket: "hooq-{{ env }}-app-{{ svc }}-logs",
+        tags: "functionbeat"
+    }
+    - { role: functionbeat.index.pattern,
+        tags: "functionbeat"
+    }

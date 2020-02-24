@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'Sanomat Grab Web Regular';
+  src: url('../fonts/Sanomat Grab Web-Regular TH.eot');
+  src: url('../fonts/Sanomat Grab Web-Regular TH.eot?#iefix')
+      format('embedded-opentype'),
+    url('../fonts/Sanomat Grab Web-Regular TH.woff2') format('woff2'),
+    url('../fonts/Sanomat Grab Web-Regular TH.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sanomat Grab Web Medium';
+  src: url('../fonts/Sanomat Grab Web-Medium TH.eot');
+  src: url('../fonts/Sanomat Grab Web-Medium TH.eot?#iefix')
+      format('embedded-opentype'),
+    url('../fonts/Sanomat Grab Web-Medium TH.woff2') format('woff2'),
+    url('../fonts/Sanomat Grab Web-Medium TH.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sanomat Grab Web Bold';
+  src: url('../fonts/Sanomat Grab Web-Bold.eot');
+  src: url('../fonts/Sanomat Grab Web-Bold.eot?#iefix')
+      format('embedded-opentype'),
+    url('../fonts/Sanomat Grab Web-Bold.woff2') format('woff2'),
+    url('../fonts/Sanomat Grab Web-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}

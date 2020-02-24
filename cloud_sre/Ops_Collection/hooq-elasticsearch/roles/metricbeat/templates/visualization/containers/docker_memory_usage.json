@@ -1,0 +1,20 @@
+{
+  "type": "visualization",
+  "visualization": {
+    "title": "Docker Memory Usage",
+    "visState": """{"type":"area","listeners":{},"params":{"scale":"linear","seriesParams":[{"showCircles":true,"show":"true","type":"area","interpolate":"linear","mode":"stacked","drawLinesBetweenPoints":true,"valueAxis":"ValueAxis-1","data":{"id":"1","label":"Count"}}],"yAxis":{},"smoothLines":false,"categoryAxes":[{"style":{},"scale":{"type":"linear"},"show":true,"title":{},"labels":{"truncate":100,"show":true},"position":"bottom","type":"category","id":"CategoryAxis-1"}],"legendPosition":"top","addTimeMarker":false,"interpolate":"linear","addLegend":true,"shareYAxis":true,"grid":{"style":{"color":"#eee"},"categoryLines":false},"mode":"stacked","defaultYExtents":false,"setYExtents":false,"addTooltip":true,"valueAxes":[{"style":{},"scale":{"type":"linear","mode":"normal"},"name":"LeftAxis-1","show":true,"title":{"text":"Count"},"labels":{"filter":false,"rotate":0,"truncate":100,"show":true},"position":"left","type":"value","id":"ValueAxis-1"}],"times":[]},"aggs":[{"params":{"field":"docker.memory.usage.total","customLabel":"Memory"},"type":"max","enabled":true,"id":"1","schema":"metric"},{"params":{"field":"@timestamp","interval":"auto","min_doc_count":1,"extended_bounds":{}},"type":"date_histogram","enabled":true,"id":"2","schema":"segment"},{"params":{"orderBy":"1","field":"container.name","customLabel":"Container name","order":"desc","size":5},"type":"terms","enabled":true,"id":"3","schema":"group"}],"title":"Memory usage"}""",
+    "uiStateJSON": "{}",
+    "description": "",
+    "version": 1,
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON" : """{"filter":[],"highlight":{"fields":{"*":{}},"post_tags":["@/kibana-highlighted-field@"],"pre_tags":["@kibana-highlighted-field@"],"require_field_match":false,"fragment_size":2147483647},"query":{"query":"event.module:docker AND metricset.name:memory","language":"kuery"},"indexRefName":"kibanaSavedObjectMeta.searchSourceJSON.index"}"""
+    }
+  },
+  "references" : [
+    {
+      "name" : "kibanaSavedObjectMeta.searchSourceJSON.index",
+      "type" : "index-pattern",
+      "id" : "hooq-metricbeat-{{ svc }}-*"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "visualization",
+  "visualization": {
+    "title": "Number of processes",
+    "visState": """{"type":"metric","listeners":{},"params":{"gauge":{"useRange":false,"gaugeType":"Metric","style":{"bgFill":"#000","bgColor":false,"fontSize":60,"subText":"","labelColor":false},"colorSchema":"Green to Red","invertColors":false,"orientation":"vertical","gaugeStyle":"Full","autoExtend":false,"labels":{"color":"black","show":true},"backStyle":"Full","colorsRange":[{"to":100,"from":0}],"scale":{"color":"#333","width":2,"labels":false,"show":false},"verticalSplit":false,"percentageMode":false,"type":"simple","gaugeColorMode":"None"},"type":"gauge","addTooltip":true,"addLegend":false},"aggs":[{"params":{"field":"process.pid","customLabel":"Processes"},"type":"cardinality","enabled":true,"id":"1","schema":"metric"}],"title":"Number of processes"}""",
+    "uiStateJSON": "{}",
+    "description": "",
+    "version": 1,
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON" : """{"filter":[],"query":{"query":"","language":"kuery"},"indexRefName":"kibanaSavedObjectMeta.searchSourceJSON.index"}"""
+    }
+  },
+  "references" : [
+    {
+      "name" : "kibanaSavedObjectMeta.searchSourceJSON.index",
+      "type" : "index-pattern",
+      "id" : "metricbeat-{{ env }}-*"
+    }
+  ]
+}

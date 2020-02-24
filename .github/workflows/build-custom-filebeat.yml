@@ -1,0 +1,25 @@
+name: build-custom-filebeat
+on:
+  push:
+    tags:
+      - filebeat-custom-*
+    paths:
+      - "cloud_sre/Ops_Collection/filebeat_config/*"
+
+jobs:
+  filebeat-custom-config-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout public repo
+        uses: actions/checkout@master
+
+      - name: login to our private repository
+        run: docker login quay.io --username hooq+techacc -p $TOKEN 2>/dev/null
+        env:
+          TOKEN: ${{ secrets.QUAY_REGISTRY_TOKEN }}
+
+      - name: Docker build and push custom filebeat image
+        run: docker build -t "quay.io/hooq/filebeat:${FILEBEAT_VERSION}" --build-arg FILEBEAT_VERSION="${FILEBEAT_VERSION}" . && docker push "quay.io/hooq/filebeat:${FILEBEAT_VERSION}"
+        working-directory: cloud_sre/Ops_Collection/filebeat_config/
+        env:
+          FILEBEAT_VERSION: "7.5.2"

@@ -1,0 +1,13 @@
+{
+  "type": "visualization",
+  "visualization": {
+    "title": "Top Processes By Memory",
+    "visState": """{"type":"metrics","params":{"bar_color_rules":[{"operator":"gte","bar_color":"rgba(104,188,0,1)","id":"60e11be0-1b18-11e7-b09e-037021c4f8df","value":0}],"index_pattern":"metricbeat-{{ env }}-*","time_field":"@timestamp","series":[{"line_width":1,"terms_field":"process.name","point_size":1,"color":"#68BC00","metrics":[{"field":"system.process.cpu.total.pct","type":"avg","id":"5f5b8d52-1b18-11e7-b09e-037021c4f8df"}],"seperate_axis":0,"split_mode":"terms","chart_type":"line","terms_order_by":"5f5b8d52-1b18-11e7-b09e-037021c4f8df","stacked":"none","axis_position":"right","formatter":"percent","id":"5f5b8d51-1b18-11e7-b09e-037021c4f8df","fill":0.5}],"axis_formatter":"number","interval":"auto","filter":"","show_legend":1,"drilldown_url":"","show_grid":1,"axis_position":"left","type":"top_n","id":"5f5b8d50-1b18-11e7-b09e-037021c4f8df"},"aggs":[],"title":"Top Processes By Memory"}""",
+    "uiStateJSON": "{}",
+    "description": "",
+    "version": 1,
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON" : """{"filter":[],"query":{"query":"","language":"kuery"}}"""
+    }
+  }
+}

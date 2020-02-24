@@ -1,0 +1,13 @@
+{
+  "type": "visualization",
+  "visualization": {
+    "title": "Disk Usage",
+    "visState": """{"type":"metrics","params":{"bar_color_rules":[{"operator":"gte","bar_color":"rgba(104,188,0,1)","id":"bf525310-1b95-11e7-8ada-3df93aab833e","value":0},{"operator":"gte","bar_color":"rgba(254,146,0,1)","id":"125fc4c0-1b96-11e7-8ada-3df93aab833e","value":0.7},{"operator":"gte","bar_color":"rgba(211,49,21,1)","id":"1a5c7240-1b96-11e7-8ada-3df93aab833e","value":0.85}],"index_pattern":"metricbeat-*","time_field":"@timestamp","series":[{"line_width":1,"terms_field":"system.filesystem.mount_point","point_size":1,"color":"#68BC00","metrics":[{"field":"system.filesystem.used.pct","type":"avg","id":"9f7e48a2-1b95-11e7-8ada-3df93aab833e"}],"seperate_axis":0,"split_mode":"terms","chart_type":"line","stacked":"none","axis_position":"right","formatter":"percent","id":"9f7e48a1-1b95-11e7-8ada-3df93aab833e","fill":0.5}],"axis_formatter":"number","interval":"auto","filter":{"query":"-system.filesystem.mount_point:\\/run* AND -system.filesystem.mount_point:\\/sys* AND -system.filesystem.mount_point:\\/dev* AND -system.filesystem.mount_point:\\/proc* AND -system.filesystem.mount_point:\\/var* AND -system.filesystem.mount_point:\\/boot","language":"lucene"},"show_legend":1,"drilldown_url":"","show_grid":1,"axis_position":"left","type":"top_n","id":"9f7e48a0-1b95-11e7-8ada-3df93aab833e"},"aggs":[],"title":"Disk Usage"}""",
+    "uiStateJSON": "{}",
+    "description": "",
+    "version": 1,
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON" : """{"filter":[],"query":{"query":"","language":"kuery"}}"""
+    }
+  }
+}

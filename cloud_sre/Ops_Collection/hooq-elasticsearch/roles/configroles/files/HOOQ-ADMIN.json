@@ -1,0 +1,34 @@
+{
+    "applications": [
+      {
+        "application": "*",
+        "privileges": [
+          "*"
+        ],
+        "resources": [
+          "*"
+        ]
+      }
+    ],
+    "transient_metadata": {
+      "enabled": true
+    },
+    "run_as": [
+      "*"
+    ],
+    "cluster": [
+      "all"
+    ],
+    "indices": [
+      {
+        "privileges": [
+          "all"
+        ],
+        "allow_restricted_indices": true,
+        "names": [
+          "*"
+        ]
+      }
+    ],
+    "metadata": {}
+  }

@@ -1,0 +1,138 @@
+@import '../../styles/base/index.scss';
+
+@media (max-width: 400px) {
+  .consent-modal {
+    min-width: 18rem !important;
+  }
+}
+
+.round {
+  position: relative;
+}
+
+.round label {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 20px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 20px;
+}
+
+.round label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: '';
+  height: 6px;
+  left: 4px;
+  opacity: 0;
+  position: absolute;
+  top: 5px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+
+.round input[type='checkbox'] {
+  visibility: hidden;
+}
+
+.round input[type='checkbox']:checked + label {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+}
+
+.round input[type='checkbox']:checked + label:after {
+  opacity: 1;
+}
+
+.watch-button {
+  background-color: $primary;
+  color: $text;
+  width: 90%;
+  z-index: 100;
+  border-radius: 4px;
+  // TODO use the Bulma's modifier to set the background color and foreground color
+  font-weight: bold;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.consent-modal {
+  width: 90%;
+  padding: 0px !important;
+}
+
+.consent-header-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0.8rem 1rem 0.5rem 0.7rem;
+}
+
+.consent-header-left {
+  flex-basis: 50%;
+  text-align: right;
+}
+
+.consent-header-right {
+  flex-basis: 50%;
+  text-align: left;
+}
+
+.consent-poster {
+  width: 100%;
+  height: 100%;
+  img {
+    width: 100%;
+  }
+}
+
+.consent-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0.5rem;
+}
+
+.consent-content-item {
+  flex-basis: 100%;
+  padding: 0.5rem 1rem;
+}
+
+.consent-content-h1 {
+  text-align: center;
+  font-size: 1.4rem !important;
+  font-family: $family-primary;
+}
+
+.consent-promotion {
+  list-style-type: initial;
+  list-style-position: outside;
+  li {
+    font-family: $family-primary;
+    font-size: 12px;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+}
+
+.watch-btn {
+  font-weight: 600;
+}
+
+.cta-consent-btn > button {
+  font-weight: 600;
+  width: 90% !important;
+  margin: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.footer-consent {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 1rem;
+}

@@ -1,0 +1,4 @@
+service:
+  name: tusca
+  environment: production
+  log_group: tusca

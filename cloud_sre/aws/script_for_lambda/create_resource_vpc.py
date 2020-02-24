@@ -1,0 +1,15 @@
+import boto3
+def lambda_handler(event, context):
+ ec2 = boto3.resource('ec2', region_name='ap-southeast-1')
+ vpc = ec2.create_vpc(CidrBlock='10.254.254.0/26')
+ vpc.create_tags(Tags=[{"Key": "Name", "Value": "vpc_for_play"}])
+ vpc.wait_until_available()
+ ec2Client = boto3.client('ec2', region_name='ap-southeast-1')
+ ec2Client.modify_vpc_attribute( VpcId = vpc.id , EnableDnsSupport = { 'Value': True } )
+ ec2Client.modify_vpc_attribute( VpcId = vpc.id , EnableDnsHostnames = { 'Value': True } )
+ internetgateway = ec2.create_internet_gateway()
+ vpc.attach_internet_gateway(InternetGatewayId=internetgateway.id)
+ routetable = vpc.create_route_table()
+ route = routetable.create_route(DestinationCidrBlock='0.0.0.0/0', GatewayId=internetgateway.id)
+ subnet = ec2.create_subnet(CidrBlock='10.254.254.0/26', VpcId=vpc.id)
+ routetable.associate_with_subnet(SubnetId=subnet.id)

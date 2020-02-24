@@ -1,0 +1,82 @@
+version: "3"
+services:
+  db:
+    image: postgres:11
+    container_name: kong-db
+    ports:
+      - 58888:5432
+    environment:
+      - POSTGRES_USER=kong
+      - POSTGRES_DB=kong
+    networks:
+      - net
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "kong"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    volumes:
+      - kong_db_data:/var/lib/postgresql/data
+    restart: on-failure
+
+  kong-migrations:
+    depends_on:
+      - db
+    image: kong:2.0
+    command: kong migrations bootstrap
+    environment:
+      KONG_DATABASE: postgres
+      KONG_PG_HOST: db
+      KONG_PG_DATABASE: kong
+      KONG_PG_USER: kong
+    networks:
+      - net
+    restart: on-failure
+
+  kong-migrations-up:
+    depends_on:
+      - db
+    image: kong:2.0
+    command: kong migrations up && kong migrations finish
+    environment:
+      KONG_DATABASE: postgres
+      KONG_PG_HOST: db
+      KONG_PG_DATABASE: kong
+      KONG_PG_USER: kong
+    networks:
+      - net
+    restart: on-failure
+
+  api:
+    depends_on:
+      - db
+    image: kong:2.0
+    container_name: kong
+    ports:
+      - 18000:8000
+      - 18001:8001
+      - 18443:8443
+      - 18444:8444
+    environment:
+      - KONG_DATABASE=postgres
+      - KONG_PG_HOST=kong-db
+      - KONG_PROXY_ACCESS_LOG=/dev/stdout
+      - KONG_ADMIN_ACCESS_LOG=/dev/stdout
+      - KONG_PROXY_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_ERROR_LOG=/dev/stderr
+      - "KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl"
+    networks:
+      - net
+    healthcheck:
+      test: ["CMD", "kong", "health"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+    restart: on-failure
+
+volumes:
+  kong_db_data:
+
+networks:
+  net:
+    driver: bridge

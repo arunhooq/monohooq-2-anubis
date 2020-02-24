@@ -1,0 +1,23 @@
+name: nikita-code-deploy-portal-prod
+on:
+  push:
+    tags:
+      - nikita-portal-prod-*
+
+jobs:
+  nikita-code-deploy-portal-ecs-prod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout public repo
+        uses: actions/checkout@v2
+
+      - name: apply terraform
+        run: make terraform-install terraform-apply
+        working-directory: services/nikita/code-deploy/portal
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: prod
+          TF_TOKEN_CLOUD_SRE: ${{ secrets.TF_TOKEN_CLOUD_SRE }}
+          TF_TOKEN_NIKITA: ${{ secrets.TF_TOKEN_NIKITA }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_PROD_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_PROD_SECRET_KEY }}

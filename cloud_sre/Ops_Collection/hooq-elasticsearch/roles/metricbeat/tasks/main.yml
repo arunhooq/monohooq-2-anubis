@@ -1,0 +1,11 @@
+- include: index_pattern.yml
+  tags: metricbeat
+
+- include: search.yml
+  tags: metricbeat
+
+- include: docker_visualization.yml
+  tags: metricbeat
+
+- include: dashboard.yml
+  tags: metricbeat

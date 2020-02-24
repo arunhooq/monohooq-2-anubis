@@ -1,0 +1,6 @@
+[app]
+print_stack_trace = true
+
+[logging]
+level = "debug"
+output = "json"

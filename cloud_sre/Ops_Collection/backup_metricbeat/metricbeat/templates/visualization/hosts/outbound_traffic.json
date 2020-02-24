@@ -1,0 +1,13 @@
+{
+  "type": "visualization",
+  "visualization": {
+    "title": "Outbound Traffic",
+    "visState": """{"type":"metrics","params":{"background_color_rules":[{"id":"0e346760-1b92-11e7-bec4-a5e9ec5cab8b"}],"time_field":"@timestamp","series":[{"line_width":1,"terms_field":"system.network.name","point_size":1,"color":"#68BC00","value_template":"{{value}}/s","label":"Outbound Traffic","metrics":[{"field":"system.network.out.bytes","type":"max","id":"0c761592-1b92-11e7-bec4-a5e9ec5cab8b"},{"field":"0c761592-1b92-11e7-bec4-a5e9ec5cab8b","type":"derivative","id":"1d659060-1b92-11e7-bec4-a5e9ec5cab8b","unit":"1s"},{"field":"1d659060-1b92-11e7-bec4-a5e9ec5cab8b","type":"positive_only","id":"f2074f70-1b92-11e7-a416-41f5ccdba2e6","unit":""},{"function":"sum","type":"series_agg","id":"a1737470-2c55-11e7-a0ad-277ce466684d"}],"seperate_axis":0,"split_mode":"terms","chart_type":"line","stacked":"none","axis_position":"right","formatter":"bytes","id":"0c761591-1b92-11e7-bec4-a5e9ec5cab8b","fill":0.5},{"line_width":1,"terms_field":"system.network.name","point_size":1,"color":"#68BC00","value_template":"{{value}}","label":"Total Transferred","metrics":[{"field":"system.network.out.bytes","type":"max","id":"37f72b50-1b92-11e7-bec4-a5e9ec5cab8b"},{"field":"37f72b50-1b92-11e7-bec4-a5e9ec5cab8b","type":"derivative","id":"37f72b51-1b92-11e7-bec4-a5e9ec5cab8b","unit":""},{"field":"37f72b51-1b92-11e7-bec4-a5e9ec5cab8b","type":"positive_only","id":"f9da2dd0-1b92-11e7-a416-41f5ccdba2e6","unit":""},{"function":"overall_sum","field":"f9da2dd0-1b92-11e7-a416-41f5ccdba2e6","sigma":"","id":"3e63c2f0-1b92-11e7-bec4-a5e9ec5cab8b","type":"series_agg"}],"seperate_axis":0,"split_mode":"terms","chart_type":"line","stacked":"none","axis_position":"right","formatter":"bytes","id":"37f70440-1b92-11e7-bec4-a5e9ec5cab8b","fill":0.5}],"axis_formatter":"number","interval":"auto","id":"0c761590-1b92-11e7-bec4-a5e9ec5cab8b","filter":{"query":"-system.network.name:l*","language":"lucene"},"show_legend":1,"show_grid":1,"index_pattern":"metricbeat-*","type":"metric","axis_position":"left"},"aggs":[],"title":"Outbound Traffic"}""",
+    "uiStateJSON": "{}",
+    "description": "",
+    "version": 1,
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON" : """{"filter":[],"query":{"query":"","language":"kuery"}}"""
+    }
+  }
+}

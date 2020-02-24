@@ -1,0 +1,13 @@
+{
+  "type": "visualization",
+  "visualization": {
+    "title": "Memory Gauge",
+    "visState": """{"type":"metrics","params":{"gauge_color_rules":[{"operator":"gte","gauge":"rgba(104,188,0,1)","id":"a0d522e0-1b91-11e7-bec4-a5e9ec5cab8b","value":0},{"operator":"gte","gauge":"rgba(254,146,0,1)","id":"b45ad8f0-1b91-11e7-bec4-a5e9ec5cab8b","value":0.7},{"operator":"gte","gauge":"rgba(211,49,21,1)","id":"c06e9550-1b91-11e7-bec4-a5e9ec5cab8b","value":0.85}],"index_pattern":"metricbeat-{{ env }}-*","gauge_inner_width":10,"series":[{"line_width":1,"point_size":1,"color":"#68BC00","label":"Memory Usage","metrics":[{"field":"system.memory.actual.used.pct","type":"avg","id":"9f51b732-1b91-11e7-bec4-a5e9ec5cab8b"}],"seperate_axis":0,"split_mode":"everything","chart_type":"line","stacked":"none","axis_position":"right","formatter":"percent","id":"9f51b731-1b91-11e7-bec4-a5e9ec5cab8b","fill":0.5}],"axis_formatter":"number","interval":"auto","filter":"","time_field":"@timestamp","show_legend":1,"show_grid":1,"gauge_style":"half","axis_position":"left","gauge_width":10,"type":"gauge","id":"9f51b730-1b91-11e7-bec4-a5e9ec5cab8b","gauge_max":"1"},"aggs":[],"title":"Memory Gauge"}""",
+    "uiStateJSON": "{}",
+    "description": "",
+    "version": 1,
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON" : """{"filter":[],"query":{"query":"","language":"kuery"}}"""
+    }
+  }
+}

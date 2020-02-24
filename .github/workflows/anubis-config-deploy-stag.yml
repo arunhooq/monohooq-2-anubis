@@ -1,0 +1,45 @@
+name: anubis-config-deploy-stag
+on:
+  push:
+    tags:
+      - anubis-config-stag-*
+
+jobs:
+  anubis-config-deploy-stag-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout public repo
+        uses: actions/checkout@master
+
+      - name: Get the latest terraform version
+        run: curl -L -O https://releases.hashicorp.com/terraform/"$TF_STABLE_VERSION"/terraform_"$TF_STABLE_VERSION"_linux_amd64.zip && unzip *.zip && sudo mv terraform /usr/bin/terraform
+        env:
+          TF_STABLE_VERSION:  ${{ secrets.TF_STABLE_VERSION }}
+
+      - name: Init and Plan terraform anubis parameter store stag
+        run: /usr/bin/terraform init -input=false && /usr/bin/terraform plan -input=false
+        working-directory: anubis/config-deploy
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: stag
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_STAG_ACCESS_KEY  }}
+          AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_STAG_SECRET_KEY }}
+
+      - name: Apply terraform anubis parameter store stag
+        run: /usr/bin/terraform apply -input=false -auto-approve
+        working-directory: anubis/config-deploy
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: stag
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_STAG_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_STAG_SECRET_KEY }}
+
+      - name: Create vault bash file for calling the vault password
+        run: printf '%s\n' '#!/bin/bash' 'echo $ANSIBLE_VAULT_PASSWORD' > $HOME/vault_env  && chmod +x $HOME/vault_env
+
+      - name: Install botocore and boto3
+        run: pip install botocore && pip install boto3
+
+
+
+

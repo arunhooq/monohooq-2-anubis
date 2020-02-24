@@ -1,0 +1,210 @@
+[
+  {
+    "volumesFrom": [],
+    "memory": null,
+    "extraHosts": null,
+    "linuxParameters": null,
+    "dnsServers": null,
+    "disableNetworking": null,
+    "dnsSearchDomains": null,
+    "portMappings": [
+      {
+        "hostPort": ${host_port},
+        "containerPort": ${container_port},
+        "protocol": "tcp"
+      }
+    ],
+    "hostname": null,
+    "essential": true,
+    "entryPoint": [],
+    "name": "${container_name}",
+    "ulimits": [
+      {
+        "softLimit": 10000,
+        "hardLimit": 30000,
+        "name": "nofile"
+      }
+    ],
+    "repositoryCredentials": {
+      "credentialsParameter": "${github_package_credentials_arn}"
+    },
+    "dockerSecurityOptions": null,
+    "environment": [],
+    "links": null,
+    "workingDirectory": null,
+    "secrets": [
+        {
+                "name": "API_GATEWAY_ENV",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/API_GATEWAY_ENV"
+        },
+        {
+                "name": "API_GATEWAY_VERSION_2_0",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/API_GATEWAY_VERSION_2_0"
+        },
+        {
+                "name": "ATTEMPT_TO_SHOW",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/ATTEMPT_TO_SHOW"
+        },
+        {
+                "name": "CHANNEL_BASE_URL",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/CHANNEL_BASE_URL"
+        },
+        {
+                "name": "CONVIVA_CORE_SDK_PATH",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/CONVIVA_CORE_SDK_PATH"
+        },
+        {
+                "name": "CONVIVA_HTML5_NATIVE_IMPLEMENTATION_PATH",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/CONVIVA_HTML5_NATIVE_IMPLEMENTATION_PATH"
+        },
+        {
+                "name": "DEFAULT_TEST_IP",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/DEFAULT_TEST_IP"
+        },
+        {
+                "name": "DEFAULT_TEST_REGION",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/DEFAULT_TEST_REGION"
+        },
+        {
+                "name": "DISCOVER_BASE_URL",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/DISCOVER_BASE_URL"
+        },
+        {
+                "name": "ENABLE_NEWRELIC",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/ENABLE_NEWRELIC"
+        },
+        {
+                "name": "ENV",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/ENV"
+        },
+        {
+                "name": "EVE_BASE_URL",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/EVE_BASE_URL"
+        },
+        {
+                "name": "EV_WEBVIEW_BASE_URL",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/EV_WEBVIEW_BASE_URL"
+        },
+        {
+                "name": "INTERVAL_TO_SHOW",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/INTERVAL_TO_SHOW"
+        },
+        {
+                "name": "KASHMIR_BASE_URL",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/KASHMIR_BASE_URL"
+        },
+        {
+                "name": "KASHMIR_CACHE_EXPIRY",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/KASHMIR_CACHE_EXPIRY"
+        },
+        {
+                "name": "KASHMIR_ENABLE_CACHE",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/KASHMIR_ENABLE_CACHE"
+        },
+        {
+                "name": "KEY",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/KEY"
+        },
+        {
+                "name": "MMDB_VERSION",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/MMDB_VERSION"
+        },
+        {
+                "name": "NEWRELIC_APP",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/NEWRELIC_APP"
+        },
+        {
+                "name": "NEWRELIC_BROWSER_APPLICATION_ID",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/NEWRELIC_BROWSER_APPLICATION_ID"
+        },
+        {
+                "name": "NEWRELIC_BROWSER_FILE_PATH",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/NEWRELIC_BROWSER_FILE_PATH"
+        },
+        {
+                "name": "NEWRELIC_BROWSER_LICENSE_KEY",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/NEWRELIC_BROWSER_LICENSE_KEY"
+        },
+        {
+                "name": "NEWRELIC_KEY",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/NEWRELIC_KEY"
+        },
+        {
+                "name": "NEWRELIC_LEVEL",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/NEWRELIC_LEVEL"
+        },
+        {
+                "name": "NODE_DEBUG",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/NODE_DEBUG"
+        },
+        {
+                "name": "NODE_ENV",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/NODE_ENV"
+        },
+        {
+                "name": "NODE_PORT",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/NODE_PORT"
+        },
+        {
+                "name": "PLAY_BASE_URL",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/PLAY_BASE_URL"
+        },
+        {
+                "name": "R21_ENABLED",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/R21_ENABLED"
+        },
+        {
+                "name": "REDIS_HOST",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/REDIS_HOST"
+        },
+        {
+                "name": "REDIS_PASSWORD",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/REDIS_PASSWORD"
+        },
+        {
+                "name": "REDIS_PORT",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/REDIS_PORT"
+        },
+        {
+                "name": "SANCTUARY_API_ENV",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/SANCTUARY_API_ENV"
+        },
+        {
+                "name": "SANCTUARY_API_VERSION",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/SANCTUARY_API_VERSION"
+        },
+        {
+                "name": "SEARCH_BASE_URL",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/SEARCH_BASE_URL"
+        },
+        {
+                "name": "STAGING",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/STAGING"
+        },
+        {
+                "name": "STAGING_DISCOVER_BASE_URL",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/STAGING_DISCOVER_BASE_URL"
+        },
+        {
+                "name": "STAGING_TITLE_ID",
+                "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/miyazaki/STAGING_TITLE_ID"
+        }
+] ,
+    "readonlyRootFilesystem": null,
+    "image": "${docker_image}:${docker_tag}",
+    "command": [],
+    "user": null,
+    "dockerLabels": null,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${awslogs_group}",
+        "awslogs-region": "${region}",
+        "awslogs-stream-prefix": "${container_name}"
+      }
+    },
+    "cpu": 100,
+    "privileged": null,
+    "memoryReservation": 500
+  }
+]

@@ -1,0 +1,4 @@
+service:
+  name: catalog-service
+  environment: staging
+  log_group: /etc/catalog-staging

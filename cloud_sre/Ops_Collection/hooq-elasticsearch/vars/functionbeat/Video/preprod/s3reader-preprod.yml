@@ -1,0 +1,4 @@
+service:
+  name: s3reader
+  environment: preprod
+  log_group: /aws/lambda/s3reader

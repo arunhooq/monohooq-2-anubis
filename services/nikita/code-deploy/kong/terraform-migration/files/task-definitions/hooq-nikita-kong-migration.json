@@ -1,0 +1,74 @@
+[
+  {
+    "volumesFrom": [],
+    "memory": null,
+    "extraHosts": null,
+    "linuxParameters": null,
+    "dnsServers": null,
+    "disableNetworking": null,
+    "dnsSearchDomains": null,
+    "portMappings": [],
+    "hostname": null,
+    "essential": true,
+    "entryPoint": [
+      "/bin/sh",
+      "-c"
+    ],
+    "command": [
+      "${command}"
+    ],
+    "name": "${container_name}",
+    "ulimits": [
+      {
+        "softLimit": 10000,
+        "hardLimit": 30000,
+        "name": "nofile"
+      }
+    ],
+    "dockerSecurityOptions": null,
+    "environment": [],
+    "links": null,
+    "workingDirectory": null,
+    "secrets": [
+      {
+        "name": "KONG_DATABASE",
+        "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/nikita/KONG_DATABASE"
+      },
+      {
+        "name": "KONG_PG_HOST",
+        "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/nikita/KONG_DB_HOST"
+      },
+      {
+        "name": "KONG_PG_PORT",
+        "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/nikita/KONG_DB_PORT"
+      },
+      {
+        "name": "KONG_PG_DATABASE",
+        "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/nikita/KONG_DB_NAME"
+      },
+      {
+        "name": "KONG_PG_USER",
+        "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/nikita/KONG_DB_USER"
+      },
+      {
+        "name": "KONG_PG_PASSWORD",
+        "valueFrom": "arn:aws:ssm:${region}:${aws_account_id}:parameter/app/nikita/KONG_DB_PASSWORD"
+      }
+    ],
+    "readonlyRootFilesystem": null,
+    "image": "${docker_image}:${docker_tag}",
+    "user": null,
+    "dockerLabels": null,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${awslogs_group}",
+        "awslogs-region": "${region}",
+        "awslogs-stream-prefix": "${container_name}"
+      }
+    },
+    "cpu": 100,
+    "privileged": null,
+    "memoryReservation": 500
+  }
+]

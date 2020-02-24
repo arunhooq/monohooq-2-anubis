@@ -1,0 +1,4 @@
+service:
+  name: maia-slack
+  environment: preprod
+  log_group: /aws/lambda/maia-slack-service

@@ -1,0 +1,23 @@
+- hosts: localhost
+  connection: local
+  gather_facts: yes
+  tasks:
+    - name: install AWS dependencies
+      tags: docsgen
+      pip:
+        name: "{{ packages }}"
+        state: present
+      vars:
+        packages:
+          - boto3
+          - botocore
+          - sphinx
+          - sphinx_rtd_theme
+
+    - name: Create an empty S3 bucket
+      tags: docsgen
+      aws_s3:
+        bucket: "{{ s3_bucket }}"
+        mode: create
+        permission: private
+

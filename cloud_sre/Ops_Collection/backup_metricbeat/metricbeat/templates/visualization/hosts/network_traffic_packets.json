@@ -1,0 +1,13 @@
+{
+  "type": "visualization",
+  "visualization": {
+    "title": "Network Traffic(Packets)",
+    "visState": """{"type":"metrics","listeners":{},"params":{"time_field":"@timestamp","series":[{"line_width":"0","terms_field":"system.network.name","point_size":"0","color":"rgba(0,156,224,1)","value_template":"{{value}}/s","label":"Inbound","metrics":[{"field":"system.network.in.packets","type":"max","id":"da1046f2-faa0-11e6-86b1-cd7735ff7e23"},{"field":"da1046f2-faa0-11e6-86b1-cd7735ff7e23","type":"derivative","id":"f41f9280-faa0-11e6-86b1-cd7735ff7e23","unit":"1s"},{"field":"f41f9280-faa0-11e6-86b1-cd7735ff7e23","type":"positive_only","id":"c0da3d80-1b93-11e7-8ada-3df93aab833e","unit":""},{"function":"sum","type":"series_agg","id":"ecaad010-2c2c-11e7-be71-3162da85303f"}],"seperate_axis":0,"split_mode":"terms","chart_type":"line","stacked":"none","axis_position":"right","formatter":"0.[00]a","id":"da1046f1-faa0-11e6-86b1-cd7735ff7e23","fill":"1"},{"line_width":"0","terms_field":"system.network.name","point_size":"0","color":"rgba(250,40,255,1)","value_template":"{{value}}/s","label":"Outbound","metrics":[{"field":"system.network.out.packets","type":"max","id":"fbbd7e30-faa0-11e6-86b1-cd7735ff7e23"},{"field":"fbbd7e30-faa0-11e6-86b1-cd7735ff7e23","type":"derivative","id":"fbbd7e31-faa0-11e6-86b1-cd7735ff7e23","unit":"1s"},{"variables":[{"field":"fbbd7e31-faa0-11e6-86b1-cd7735ff7e23","id":"1940bad0-faa1-11e6-86b1-cd7735ff7e23","name":"rate"}],"type":"calculation","id":"17e597a0-faa1-11e6-86b1-cd7735ff7e23","script":"params.rate != null && params.rate > 0 ? params.rate * -1 : null"},{"function":"sum","type":"series_agg","id":"fe5fbdc0-2c2c-11e7-be71-3162da85303f"}],"seperate_axis":0,"split_mode":"terms","chart_type":"line","stacked":"none","axis_position":"right","formatter":"0.[00]a","id":"fbbd5720-faa0-11e6-86b1-cd7735ff7e23","fill":"1"}],"axis_formatter":"number","interval":"auto","id":"da1046f0-faa0-11e6-86b1-cd7735ff7e23","filter":{"query":"-system.network.name:l*","language":"lucene"},"show_legend":1,"index_pattern":"*","type":"timeseries","axis_position":"left"},"aggs":[],"title":"Network Traffic(Packets)"}""",
+    "uiStateJSON": "{}",
+    "description": "",
+    "version": 1,
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON" : """{"filter":[],"query":{"query":"","language":"kuery"}}"""
+    }
+  }
+}

@@ -1,0 +1,42 @@
+name: nikita-code-deploy-portal-dev
+on:
+  push:
+    tags:
+      - nikita-portal-dev-*
+    branches:
+      - UM-*
+    paths:
+      - 'services/nikita/code-deploy/portal/**'
+
+jobs:
+  nikita-code-deploy-portal-merge-master-dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout public repo
+        uses: actions/checkout@v2
+        with:
+          github_token: ${{ secrets.TECHACC_TOKEN}}
+
+      - name: git merge origin master
+        run: make git-merge-master
+        env:
+          GITHUB_REF: ${{ toJson(github.ref) }}
+
+  nikita-code-deploy-portal-ecs-dev:
+    runs-on: ubuntu-latest
+    needs: nikita-code-deploy-portal-merge-master-dev
+    steps:
+      - name: checkout public repo
+        uses: actions/checkout@v2
+
+      - name: apply terraform
+        run: make docker-push terraform-install terraform-apply
+        working-directory: services/nikita/code-deploy/portal
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: dev
+          TF_TOKEN_CLOUD_SRE: ${{ secrets.TF_TOKEN_CLOUD_SRE }}
+          TF_TOKEN_NIKITA: ${{ secrets.TF_TOKEN_NIKITA }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_DEV_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_DEV_SECRET_KEY }}
+          DOCKER_TOKEN: ${{ secrets.QUAY_REGISTRY_TOKEN }}

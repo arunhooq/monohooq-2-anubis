@@ -1,0 +1,13 @@
+{
+  "type": "visualization",
+  "visualization": {
+    "title": "Memory Used",
+    "visState": """{"type":"metrics","params":{"time_field":"@timestamp","series":[{"line_width":1,"point_size":"0","color":"rgba(211,49,21,1)","label":"Used","metrics":[{"field":"system.memory.actual.used.bytes","type":"avg","id":"4ff61fd1-1b16-11e7-b09e-037021c4f8df"}],"seperate_axis":0,"split_mode":"everything","chart_type":"line","stacked":"stacked","axis_position":"right","formatter":"bytes","id":"4ff61fd0-1b16-11e7-b09e-037021c4f8df","fill":"1"},{"line_width":1,"point_size":"0","color":"rgba(0,156,224,1)","label":"Cache","metrics":[{"field":"system.memory.actual.used.bytes","type":"avg","id":"753a6081-1b16-11e7-b09e-037021c4f8df"},{"field":"system.memory.used.bytes","type":"avg","id":"7c9d3f00-1b16-11e7-b09e-037021c4f8df"},{"variables":[{"field":"753a6081-1b16-11e7-b09e-037021c4f8df","id":"890f9620-1b16-11e7-b09e-037021c4f8df","name":"actual"},{"field":"7c9d3f00-1b16-11e7-b09e-037021c4f8df","id":"8f3ab7f0-1b16-11e7-b09e-037021c4f8df","name":"used"}],"type":"calculation","id":"869cc160-1b16-11e7-b09e-037021c4f8df","script":"params.actual != null && params.used != null ? params.used - params.actual : null"}],"seperate_axis":0,"split_mode":"everything","chart_type":"line","stacked":"stacked","axis_position":"right","formatter":"bytes","id":"753a6080-1b16-11e7-b09e-037021c4f8df","fill":"1"},{"line_width":1,"point_size":"0","color":"#68BC00","label":"Free","metrics":[{"field":"system.memory.free","type":"avg","id":"32f46f42-1b16-11e7-b09e-037021c4f8df"}],"seperate_axis":0,"split_mode":"everything","chart_type":"line","stacked":"stacked","axis_position":"right","formatter":"bytes","id":"32f46f41-1b16-11e7-b09e-037021c4f8df","fill":"1"}],"axis_formatter":"number","interval":"auto","id":"32f46f40-1b16-11e7-b09e-037021c4f8df","show_legend":1,"show_grid":1,"index_pattern":"metricbeat-{{ env }}-*","type":"timeseries","axis_position":"left"},"aggs":[],"title":"Memory Used"}""",
+    "uiStateJSON": "{}",
+    "description": "",
+    "version": 1,
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON" : """{"filter":[],"query":{"query":"","language":"kuery"}}"""
+    }
+  }
+}

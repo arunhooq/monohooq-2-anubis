@@ -1,0 +1,4 @@
+service:
+  name: catalog-service
+  environment: preprod
+  log_group: /etc/catalog-preprod

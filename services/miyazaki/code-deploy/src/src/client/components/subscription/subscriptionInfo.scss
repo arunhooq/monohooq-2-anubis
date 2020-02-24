@@ -1,0 +1,66 @@
+@import '../../styles/base/index.scss';
+
+.subscription-info-header {
+  display: flex;
+  justify-content: flex-start;
+  margin: -1rem !important;
+  font-family: $family-primary;
+  background-color: $subscription-header-background-color;
+  box-shadow: inset 0px -10px 8px -8px rgba(0, 0, 0, 0.1) !important;
+
+  .column {
+    // Note: Override .column default padding
+    padding: 0.75rem 1rem !important;
+  }
+
+  span:first-child {
+    height: 1.25rem;
+    line-height: 1.67;
+    font-size: 0.75rem;
+    color: $grey-line;
+  }
+
+  span:last-child {
+    height: 1.5625rem;
+    font-size: 1.125rem;
+    font-weight: 800;
+    line-height: 1.39;
+    letter-spacing: 0.11px;
+    color: $dark;
+  }
+}
+
+.subscription-info-table {
+  margin: 1rem -1rem;
+
+  .subscription-info-row {
+    align-items: center;
+    height: 3.25rem;
+    padding: 0 1rem;
+    font-family: $family-primary;
+    border-bottom: solid 1px #dddddd;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    & > div:first-child {
+      margin-top: 0;
+      font-family: $family-primary;
+      font-size: 14px;
+      line-height: 1.29;
+      letter-spacing: -0.3px;
+      color: $dark;
+    }
+
+    & > div:last-child {
+      margin-top: 0;
+      font-family: $family-primary;
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 1.29;
+      letter-spacing: -0.3px;
+      color: $dark;
+    }
+  }
+}

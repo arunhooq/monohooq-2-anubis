@@ -1,0 +1,81 @@
+name: nikita-code-deploy-lambda-prod
+on:
+  push:
+    tags:
+      - nikita-lambda-prod-account-stream-consumer-*
+      - nikita-lambda-prod-account-stream-producer-*
+      - nikita-lambda-prod-transaction-stream-consumer-*
+      - nikita-lambda-prod-transaction-stream-producer-*
+
+jobs:
+  nikita-code-deploy-lambda-account-stream-consumer-prod:
+    if: startsWith(github.ref, 'refs/tags/nikita-lambda-prod-account-stream-consumer-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout public repo
+        uses: actions/checkout@v2
+
+      - name: download and update account-stream-consumer
+        run: make download terraform-install terraform-apply
+        working-directory: services/nikita/code-deploy/lambda/account_stream_consumer
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: prod
+          TF_TOKEN_NIKITA: ${{ secrets.TF_TOKEN_NIKITA }}
+          JFROG_API_KEY: ${{ secrets.JFROG_API_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_PROD_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_PROD_SECRET_KEY }}
+
+  nikita-code-deploy-lambda-account-stream-producer-prod:
+    if: startsWith(github.ref, 'refs/tags/nikita-lambda-prod-account-stream-producer-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout public repo
+        uses: actions/checkout@v2
+
+      - name: download and update account-stream-producer
+        run: make download terraform-install terraform-apply
+        working-directory: services/nikita/code-deploy/lambda/account_stream_producer
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: prod
+          TF_TOKEN_NIKITA: ${{ secrets.TF_TOKEN_NIKITA }}
+          JFROG_API_KEY: ${{ secrets.JFROG_API_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_PROD_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_PROD_SECRET_KEY }}
+
+  nikita-code-deploy-lambda-transaction-stream-consumer-prod:
+    if: startsWith(github.ref, 'refs/tags/nikita-lambda-prod-transaction-stream-consumer-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout public repo
+        uses: actions/checkout@v2
+
+      - name: download and update transaction-stream-consumer
+        run: make download terraform-install terraform-apply
+        working-directory: services/nikita/code-deploy/lambda/transaction_stream_consumer
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: prod
+          TF_TOKEN_NIKITA: ${{ secrets.TF_TOKEN_NIKITA }}
+          JFROG_API_KEY: ${{ secrets.JFROG_API_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_PROD_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_PROD_SECRET_KEY }}
+
+  nikita-code-deploy-lambda-transaction-stream-producer-prod:
+    if: startsWith(github.ref, 'refs/tags/nikita-lambda-prod-transaction-stream-producer-')
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout public repo
+        uses: actions/checkout@v2
+
+      - name: download and update transaction-stream-producer
+        run: make download terraform-install terraform-apply
+        working-directory: services/nikita/code-deploy/lambda/transaction_stream_producer
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: prod
+          TF_TOKEN_NIKITA: ${{ secrets.TF_TOKEN_NIKITA }}
+          JFROG_API_KEY: ${{ secrets.JFROG_API_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_PROD_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_PROD_SECRET_KEY }}

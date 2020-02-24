@@ -1,0 +1,13 @@
+{
+  "type": "visualization",
+  "visualization": {
+    "title": "Interfaces by Outgoing traffic",
+    "visState": """{"type":"metrics","params":{"bar_color_rules":[{"id":"9db20be0-4d60-11e7-9a4c-ed99bbcaa42b"}],"time_field":"@timestamp","series":[{"line_width":1,"terms_field":"system.network.name","point_size":1,"color":"#68BC00","label":"Interfaces by Outgoing traffic","metrics":[{"field":"system.network.out.bytes","type":"avg","id":"9cdba912-4d60-11e7-9a4c-ed99bbcaa42b"}],"seperate_axis":0,"split_mode":"terms","chart_type":"line","terms_order_by":"9cdba912-4d60-11e7-9a4c-ed99bbcaa42b","stacked":"none","axis_position":"right","formatter":"bytes","id":"9cdba911-4d60-11e7-9a4c-ed99bbcaa42b","fill":0.5}],"axis_formatter":"number","interval":"auto","id":"9cdba910-4d60-11e7-9a4c-ed99bbcaa42b","show_legend":1,"show_grid":1,"index_pattern":"metricbeat-{{ env }}-*","type":"top_n","axis_position":"left"},"aggs":[],"title":"Interfaces by Outgoing traffic"}""",
+    "uiStateJSON": "{}",
+    "description": "",
+    "version": 1,
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON" : """{"filter":[],"query":{"query":"","language":"kuery"}}"""
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.vim-wrapper {
+  width: 55px;
+  height: 24px;
+  border-radius: 12px;
+  background-image: linear-gradient(to right, #d27b47, #951b81);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0.4rem;
+}
+
+.vip-label {
+  width: 19px;
+  height: 16px;
+  font-family: Muli;
+  font-size: 11px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.45;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}

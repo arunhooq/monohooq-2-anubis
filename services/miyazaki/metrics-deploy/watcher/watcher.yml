@@ -1,0 +1,24 @@
+--- # playbook to run metricbeat index pattern and dashboards visualizations and searches
+
+- hosts: localhost
+  connection: local
+  pre_tasks:
+    - name: add watcher for metricbeat
+      include_vars: "{{ item }}"
+      with_items:
+        - "../../../../cloud_sre/Ops_Collection/hooq-elasticsearch/roles/watcher/vars/main.yml"
+        - "../../../../cloud_sre/Ops_Collection/hooq-elasticsearch/vars/hosts/hooq-elastic-stack.vault.yml"
+        - "../../../../cloud_sre/Ops_Collection/hooq-elasticsearch/vars/hosts/hooq-elastic-stack.yml"
+        
+
+  roles:
+    - { 
+      role: watcher, 
+      tags: "watcher",  
+      svc: "miyazaki", 
+      cpu_threshold: 0.65 , 
+      memory_threshold: 0.75, 
+      slack_channel: '"#elk-metric-testing"',
+      window_period: "5m", 
+      watcher_type : [ "system-cpu-usage", "system-memory-usage" ]  
+      }

@@ -1,0 +1,45 @@
+{
+    "cluster": [],
+    "indices": [
+        {
+            "names": [
+                "hooq-*"
+            ],
+            "privileges": [
+                "read"
+            ],
+            "field_security": {
+                "grant": [
+                    "*"
+                ],
+                "except": []
+            },
+            "allow_restricted_indices": false
+        }
+    ],
+    "applications": [
+        {
+            "application": "kibana-.kibana",
+            "privileges": [
+                "read"
+            ],
+            "resources": [
+                "*"
+            ]
+        },
+        {
+            "application": "kibana-.kibana",
+            "privileges": [
+                "space_all"
+            ],
+            "resources": [
+                "space:{{ item.id }}"
+            ]
+        }
+    ],
+    "run_as": [],
+    "metadata": {},
+    "transient_metadata": {
+        "enabled": true
+    }
+}

@@ -1,0 +1,42 @@
+name: stress-cputest-miyazaki-dev
+on:
+  push:
+    tags:
+      - stress-cputest-miyazaki-dev-*
+
+jobs:
+  stress-cpu-test-miyazaki-dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout public repo
+        uses: actions/checkout@master
+
+      - name: install epel on miyazaki dev
+        run: aws ssm send-command --targets "Key=tag:owner,Values=$SERVICE" --document-name "AWS-RunShellScript" --region $AWS_REGION --parameters commands=["sudo yum install -y epel-release"] --cloud-watch-output-config "CloudWatchOutputEnabled=true,CloudWatchLogGroupName=miyazaki_cpu_test"
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: dev
+          SERVICE: miyazaki
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_DEV_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_DEV_SECRET_KEY }}
+          AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+
+      - name: install stress on miyazaki dev
+        run: aws ssm send-command --targets "Key=tag:owner,Values=$SERVICE" --document-name "AWS-RunShellScript" --region $AWS_REGION --parameters commands=["sudo yum install -y stress"] --cloud-watch-output-config "CloudWatchOutputEnabled=true,CloudWatchLogGroupName=miyazaki_cpu_test"
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: dev
+          SERVICE: miyazaki
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_DEV_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_DEV_SECRET_KEY }}
+          AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+
+      - name: cpu test on miyazaki dev
+        run: aws ssm send-command --targets "Key=tag:owner,Values=$SERVICE" --document-name "AWS-RunShellScript" --region $AWS_REGION --parameters commands=["sudo stress-ng --cpu 5 --timeout 10m --metrics-brief"] --cloud-watch-output-config "CloudWatchOutputEnabled=true,CloudWatchLogGroupName=miyazaki_cpu_test"
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: dev
+          SERVICE: miyazaki
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_DEV_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_DEV_SECRET_KEY }}
+          AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}

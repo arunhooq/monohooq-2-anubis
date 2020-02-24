@@ -1,0 +1,37 @@
+name: miyazaki-vpc-peering-stag-pipeline
+on:
+  push:
+    tags:
+      - miyazaki-vpc-peering-stag-*
+jobs:
+  miyazaki-vpc-peering-stag-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout public repo
+        uses: actions/checkout@master
+
+      - name : Get the latest terraform version
+        run: wget `echo "https://releases.hashicorp.com/terraform/$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M ".current_version")/terraform_$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M ".current_version")_linux_amd64.zip"`  && unzip *.zip && sudo mv terraform /usr/bin/terraform
+
+      - name: Init and plan for AWS VPC peering
+        run:  sed -i -e "s/TF_TOKEN_MIYAZAKI/$TF_TOKEN_MIYAZAKI/g" *.tf  &&  sed -i -e "s@AWS_INITIATOR_ACCESS_KEY@$AWS_INITIATOR_ACCESS_KEY@g;s@AWS_INITIATOR_SECRET_KEY@$AWS_INITIATOR_SECRET_KEY@g;s@AWS_ACCEPTER_SECRET_KEY@$AWS_ACCEPTER_SECRET_KEY@g;s@AWS_ACCEPTER_ACCESS_KEY@$AWS_ACCEPTER_ACCESS_KEY@g" vpcpeering.tf &&  /usr/bin/terraform init -input=false && /usr/bin/terraform plan -input=false
+        working-directory: services/miyazaki/vpc-peering/
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: stag
+          AWS_ACCEPTER_ACCESS_KEY: ${{ secrets.AWS_CC_PROD_ACCESS_KEY }}
+          AWS_ACCEPTER_SECRET_KEY: ${{ secrets.AWS_CC_PROD_SECRET_KEY }}
+          AWS_INITIATOR_ACCESS_KEY: ${{ secrets.AWS_STAG_ACCESS_KEY }}
+          AWS_INITIATOR_SECRET_KEY: ${{ secrets.AWS_STAG_SECRET_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          TF_TOKEN_MIYAZAKI: ${{ secrets.TF_TOKEN_MIYAZAKI }}
+
+      - name: Apply Terraform VPC peering
+        run:  /usr/bin/terraform apply -input=false -auto-approve
+        working-directory: services/miyazaki/vpc-peering/
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: stag
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+    
+

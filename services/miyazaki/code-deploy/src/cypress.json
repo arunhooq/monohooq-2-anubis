@@ -1,0 +1,9 @@
+{
+  "projectId": "miyazaki",
+  "chromeWebSecurity": false,
+  "baseUrl": "http://grab.machine:4352",
+  "watchForFileChanges": false,
+  "env": {},
+  "viewportHeight": 640,
+  "viewportWidth": 360
+}

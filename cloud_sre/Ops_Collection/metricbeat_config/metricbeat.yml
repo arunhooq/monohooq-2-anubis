@@ -1,0 +1,89 @@
+###################################### Modules configuration #######################
+metricbeat.autodiscover:
+  providers:
+    - type: docker
+      hints.enabled: true
+
+metricbeat.modules:
+  #-------------------------------- System Module --------------------------------
+  - module: system
+    metricsets:
+      - cpu # CPU usage
+      - load # CPU load averages
+      - memory # Memory usage
+      - network # Network IO
+      - process # Per process metrics
+      - process_summary # Process summary
+      - uptime # System Uptime
+      - socket_summary # Socket summary
+      - core # Per CPU core usage
+      - diskio # Disk IO
+      - filesystem # File system usage for each mountpoint
+      - fsstat # File system summary metrics
+      - raid # Raid
+      - socket # Sockets and connection info (linux only)
+    enabled: true
+    period: 10s
+    processes: [".*"]
+    # Configure the metric types that are included by these metricsets.
+    cpu.metrics: ["percentages"] # The other available options are normalized_percentages and ticks.
+    core.metrics: ["percentages"] # The other available option is ticks.
+
+  #-------------------------------Docker Module ----------------------------------------
+  - module: docker
+    metricsets:
+      - "container"
+      - "cpu"
+      - "diskio"
+      - "event"
+      - "healthcheck"
+      - "info"
+      - "image"
+      - "memory"
+      - "network"
+    hosts: ["unix:///var/run/docker.sock"]
+    period: 10s
+    enabled: true
+
+
+#================================ General =============================================================
+
+name: "${CONTAINER_NAME}-${ENVIRONMENT}-${HOSTNAME}"
+fields:
+  env: "${ENVIRONMENT}"
+
+#============================= Elastic Cloud ===============================================================
+
+# Set environment variable to ELASTIC_CLOUD_ID and ELASTIC_CLOUD_AUTH
+cloud.id: "${ELASTIC_CLOUD_ID:}"
+cloud.auth: "${ELASTIC_CLOUD_AUTH:}"
+
+#==================== Elasticsearch template setting ======================================================
+
+setup.template.enabled: true
+setup.template.name: "hooq-${CONTAINER_NAME}-template"
+setup.template.pattern: "hooq-${CONTAINER_NAME}-*"
+setup.template.settings:
+  index.number_of_shards: 1
+  index.number_of_replicas: 1
+
+#========================== ILM Setting =====================================================================
+
+setup.ilm.enabled: auto
+setup.ilm.rollover_alias: "hooq-${CONTAINER_NAME}"
+setup.ilm.policy_name: "metricbeat_ilm_policy"
+
+#================================ Output ==================================================================
+
+output.elasticsearch.index: "hooq-${CONTAINER_NAME}-%{+yyyy.MM.dd}"
+
+#================================ Kibana Dashboard ==================================================================
+
+setup.dashboard.index: "hooq-${CONTAINER_NAME}-*"
+
+#================================ Logging ==================================================================
+logging.to_files: true
+logging.files:
+  rotateeverybytes: 50485760 # = 50MB
+  keepfiles: 2
+  permissions: 0644

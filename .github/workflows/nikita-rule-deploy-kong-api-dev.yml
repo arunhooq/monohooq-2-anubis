@@ -1,0 +1,27 @@
+name: nikita-rule-deploy-kong-api-dev
+on:
+  push:
+    tags:
+      - nikita-kong-api-rule-dev-*
+    branches:
+      - UM-*
+    paths:
+      - 'services/nikita/api-rule-deploy/**'
+
+jobs:
+  nikita-rule-deploy-kong-api-run-dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout public repo
+        uses: actions/checkout@v2
+
+      - name: Deploy API rules
+        run: make terraform-install terraform-install-kong-plugin terraform-apply
+        working-directory: services/nikita/api-rule-deploy/
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: dev
+          TF_TOKEN_NIKITA: ${{ secrets.TF_TOKEN_NIKITA }}
+          TF_VAR_kong_admin_uri: https://nikita-kong-admin.dev-hooq.tv
+          ANSIBLE_VAULT_PASSWORD: ${{ secrets.NIKITA_ANSIBLE_VAULT_PASSWORD }}
+          ENVIRONMENT: dev

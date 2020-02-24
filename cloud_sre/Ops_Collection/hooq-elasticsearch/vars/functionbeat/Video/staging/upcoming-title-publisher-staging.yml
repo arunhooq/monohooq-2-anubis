@@ -1,0 +1,4 @@
+service:
+  name: upcoming-title-publisher
+  environment: staging
+  log_group: /aws/lambda/upcoming-title-publisher

@@ -1,0 +1,13 @@
+{
+    "enabled": true,
+    {% if item.roles is defined %}
+        "roles": {{ item.roles }},
+    {% else %}
+        "roles": {{ custom_role }},
+    {% endif %}
+    "rules": { "all" : [
+        { "field": { "realm.name": "cloud-saml" } },
+        { "field": { "groups": "{{ item.groups }}" } }
+    ]},
+    "metadata": { "version": 1 }
+}

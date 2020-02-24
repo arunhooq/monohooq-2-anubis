@@ -1,0 +1,48 @@
+@import '../../styles/_variables.scss';
+
+.toast {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+
+  &__wrapper {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin: 0.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
+    background-color: #ffffff;
+  }
+
+  &__image {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    object-fit: contain;
+    box-shadow: 0 -4px 13px 0 rgba(255, 255, 255, 0.8);
+    min-width: 3.5rem;
+    min-height: 3.5rem;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 1rem;
+  }
+
+  &__title {
+    font-size: 0.875rem;
+    font-weight: 800;
+    color: #1e1e1e;
+  }
+
+  &__subtitle {
+    font-size: 0.875rem;
+    line-height: 1.43;
+    color: #1e1e1e;
+  }
+}

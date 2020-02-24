@@ -1,0 +1,14 @@
+@import '../../styles/base/index.scss';
+
+.header-wrapper--subscription {
+  background-color: $subscription-header-background-color;
+  box-shadow: inset 0px 10px 8px -8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.page-title--subscription {
+  text-align: left;
+  height: 1.125rem;
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: $dark;
+}

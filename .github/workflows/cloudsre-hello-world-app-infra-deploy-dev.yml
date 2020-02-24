@@ -1,0 +1,48 @@
+name: cloudsre-hello-world-app-infra-deploy-dev
+on:
+  pull_request:
+    types: [closed]
+    paths:
+      - "services/cloudsre-hello-world-app/infra-deploy/**"
+
+jobs:
+  cloudsre-hello-world-app-infra-dev-deployment:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout public repo
+        uses: actions/checkout@1.2.0
+
+      - name: Get the latest terraform version
+        run: curl -L -O https://releases.hashicorp.com/terraform/"$TF_TEST_VERSION"/terraform_"$TF_TEST_VERSION"_linux_amd64.zip && unzip *.zip && sudo mv terraform /usr/bin/terraform
+        env:
+          TF_TEST_VERSION: ${{ secrets.TF_TEST_VERSION }}
+
+      - name: Add GitHub Sha as version to terraform
+        run: export GITHUBSHA=`git rev-parse HEAD | cut -c1-7` && sed -i -e "s/GITHUBSHA/$GITHUBSHA/g" variables.tf
+        working-directory: services/cloudsre-hello-world-app/infra-deploy/
+
+      - name: Init and plan terraform cloudsre-hello-world-app infra dev
+        run: |
+          sed -i -e "s/TF_TOKEN_CLOUD_SRE/$TF_TOKEN_CLOUD_SRE/g" *.tf
+          sed -i -e "s/PRIVATE_REGISTRY_TOKEN/$PRIVATE_REGISTRY_TOKEN/g" *.tf
+          /usr/bin/terraform init -input=false
+          /usr/bin/terraform plan -input=false
+        working-directory: services/cloudsre-hello-world-app/infra-deploy/
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: dev
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_DEV_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_DEV_SECRET_KEY }}
+          TF_TOKEN_CLOUD_SRE: ${{ secrets.TF_TOKEN_CLOUD_SRE }}
+          PRIVATE_REGISTRY_TOKEN: ${{ secrets.QUAY_REGISTRY_TOKEN }}
+
+      - name: Apply terraform cloudsre-hello-world-app infra dev
+        run: |
+          /usr/bin/terraform apply -input=false -auto-approve
+        working-directory: services/cloudsre-hello-world-app/infra-deploy/
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: dev
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_DEV_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_DEV_SECRET_KEY }}

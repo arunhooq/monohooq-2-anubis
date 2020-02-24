@@ -1,0 +1,5 @@
+* text eol=lf
+
+# Won't touch this binary files
+*.eot binary
+*.png binary

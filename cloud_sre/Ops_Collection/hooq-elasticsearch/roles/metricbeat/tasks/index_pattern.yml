@@ -1,0 +1,15 @@
+- name: Add index pattern
+  uri:
+    url: "{{ elasticsearch.url }}/.kibana/_doc/index-pattern:{{ item }}-{{ svc }}-{{ env }}-*"
+    method: POST
+    user: "{{ secret.elasticsearch.username }}"
+    password: "{{ secret.elasticsearch.password }}"
+    return_content: yes
+    body: "{{ lookup('template','../templates/indexpattern/{{ item }}_index_pattern.json') }}"
+    body_format: json
+    status_code: 200,201
+    validate_certs: no
+  with_items:
+    - metricbeat
+  register: response
+  changed_when: response.status == 201

@@ -1,0 +1,16 @@
+{
+  "order": 0,
+  "index_patterns": ["hooq-nightly-app-*", "hooq-production-app-*", "hooq-dev-app-*", "hooq-prod-app-*"],
+  "settings": {
+    "index": {
+      "number_of_shards": "2"
+    }
+  },
+  "mappings":{
+    "properties": {
+      "time": {
+        "type": "date"
+      }
+    }
+  }
+}

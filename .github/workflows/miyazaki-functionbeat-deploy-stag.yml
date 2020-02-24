@@ -1,0 +1,27 @@
+name: miyazaki-functionbeat-deploy-stag
+on:
+ push:
+  tags:
+    - miyazaki-functionbeat-stag-*
+
+jobs:
+ miyazaki-functionbeat-deployment-action-stag:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Checkout public repo
+       uses: actions/checkout@master
+
+     - name: Install botocore and boto3
+       run: pip install botocore && pip install boto3
+
+     - name: functionbeat deploy for the miyazaki stag
+       run: make ansible-apply
+       working-directory: services/miyazaki/functionbeat-deploy/
+       env:
+         ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
+         ENVIRONMENT: stag
+         SERVICE: miyazaki
+         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_STAG_ACCESS_KEY }}
+         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_STAG_SECRET_KEY }}
+         AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+         FUNCTIONBEAT_VERSION: 7.5.2

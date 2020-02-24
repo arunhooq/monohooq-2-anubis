@@ -1,0 +1,37 @@
+name: anubis-functionbeat-deploy-play
+on:
+  push:
+    branches:
+      - AUT-*
+    paths:
+      - 'anubis/functionbeat-deploy/**'
+
+jobs:
+  anubis-functionbeat-deploy-play:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout public repo
+        uses: actions/checkout@master
+
+      - name: Create vault bash file for calling the vault password
+        run: printf '%s\n' '#!/bin/bash' 'echo $ANSIBLE_VAULT_PASSWORD' > $HOME/vault_env  && chmod +x $HOME/vault_env
+
+      - name: Install botocore and boto3
+        run: pip install botocore && pip install boto3
+
+      - name: functionbeat deploy for the anubis play
+        run: |
+          AWS_REGION="$AWS_DEFAULT_REGION"
+          AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID"
+          AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
+          ANSIBLE_ROLES_PATH=../../cloud_sre/Ops_Collection/hooq-elasticsearch/roles  ansible-playbook functionbeat.yml -vv -e env="$ENVIRONMENT" -e svc="$SERVICE" -e functionbeat_version="$FUNCTIONBEAT_VERSION"
+        working-directory: anubis/functionbeat-deploy/
+        env:
+          ANSIBLE_VAULT_PASSWORD_FILE: $HOME/vault_env
+          ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
+          ENVIRONMENT: play
+          SERVICE: anubis
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_PLAY_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_PLAY_SECRET_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          FUNCTIONBEAT_VERSION: 7.5.1

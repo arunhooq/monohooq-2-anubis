@@ -1,0 +1,35 @@
+- name: Add host visualizations to Kibana
+  uri:
+    url: "{{ elasticsearch.url }}/.kibana/_doc/visualization:{{item}}"
+    method: POST
+    user: "{{ secret.elasticsearch.username }}"
+    password: "{{ secret.elasticsearch.password }}"
+    body: "{{ lookup('template','../templates/visualization/hosts/{{item}}.json') }}"
+    body_format: json
+    status_code: 201,200
+    validate_certs: no
+  with_items:
+   - network_traffic_packets
+   - system_load
+   - network_traffic_bytes
+   - memory_usage
+   - cpu_top_processes
+   - memory_top_processes
+   - cpu_usage
+   - disk_io_bytes
+   - load_gauge
+   - cpu_gauge
+   - memory_gauge
+   - inbound_traffic
+   - outbound_traffic
+   - disk_usage
+   - swap_usage
+   - memory_usage
+   - memory_used
+   - disk_used
+   - packet_loss
+   - interface_incoming_traffic
+   - interface_outgoing_traffic
+   - number_of_processes
+  register: response
+  changed_when: response.status == 201

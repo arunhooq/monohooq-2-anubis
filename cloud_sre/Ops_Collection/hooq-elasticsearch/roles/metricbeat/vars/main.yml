@@ -1,0 +1,7 @@
+elasticsearch:
+  url: https://e57ad45d8ace49edaca54e2d19b2c830.ap-southeast-1.aws.found.io:9243
+
+kibana:
+  url: https://15c61aabf01e48c8b73d3cfa54af0c2c.ap-southeast-1.aws.found.io:9243
+
+value: !unsafe
